@@ -102,7 +102,7 @@ function Navbar({ className }: { className?: string }) {
       {/* Mobile Menu */}
       <div className=" lg:hidden  border-b-2 flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
-          {/* <Link href="/" className="h-6 flex items-center">
+          <Link href="/" className="h-6 flex items-center">
             <Image
               src="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728885791/Logo_l8re7f.webp"
               alt="Logo"
@@ -110,7 +110,7 @@ function Navbar({ className }: { className?: string }) {
               height={500}
               className="h-[1.4rem] w-full"
             />
-          </Link> */}
+          </Link>
 
           <button
             className="ml-2 text-gray-700 focus:outline-none"

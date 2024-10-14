@@ -38,6 +38,13 @@ export default function RootLayout({
           as="image"
           type="image/webp"
         />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728896967/webphome_1_optimized_10_kcofi8.webp"
+          imageSrcSet="(max-width: 450px) 100vw, (max-width: 1024px) 50vw, 1200px"
+        />
+
         {/* Asynchronously load the external PageSense script */}
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
