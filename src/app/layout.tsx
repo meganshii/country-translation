@@ -41,7 +41,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728896967/webphome_1_optimized_10_kcofi8.webp"
+          href="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728902747/webphome_1_optimized_10_mvqf3i.avif"
           imageSrcSet="(max-width: 450px) 100vw, (max-width: 1024px) 50vw, 1200px"
         />
 
