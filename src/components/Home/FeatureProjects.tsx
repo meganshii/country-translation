@@ -5,7 +5,9 @@ import React, {
   useRef,
   useState,
   useMemo,
+  useCallback,
 } from "react";
+import Image from "next/image";
 import data from "../Constants/hero.json"; // Assuming this holds the 'homefeaturedata'
 
 const FeatureProjects: React.FC = () => {
@@ -19,7 +21,24 @@ const FeatureProjects: React.FC = () => {
     return data.find((item) => item.category === "homefeaturedata")?.data;
   }, []);
 
-  
+  // Memoized scroll functions to avoid re-creation on every render
+  const scrollLeft = useCallback(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: -carouselRef.current.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
+  const scrollRight = useCallback(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: carouselRef.current.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +72,70 @@ const FeatureProjects: React.FC = () => {
       />
 
       <div className="flex flex-row rounded-2xl lg:my-[1vh] bg-white p-2">
-      
+        {/* Left Section with Title and Buttons */}
+        <div className="flex w-[20%] pt-2 flex-col relative items-center">
+          <div className="lg:text-2xl text-center text-[1.8rem]">
+            <h2 className="lg:text-2xl text-center  text-[1.8rem] bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-medium">
+              {relatedProduct?.title?.trim().replace(/\s+\S+$/, "") ||
+                "Default Title"}
+            </h2>
+            <h2 className="lg:text-2xl text-center  text-[1.8rem] bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold">
+              {relatedProduct?.title?.trim().match(/\S+$/) ||
+                "Default Subtitle"}
+            </h2>
+          </div>
+          <p className="text-center text-[0.7rem] font-medium pt-2 w-[60%]">
+            {relatedProduct?.description || "No description available."}
+          </p>
+          <div className="flex flex-row justify-between">
+            <button
+              className="text-[#cccaca] absolute left-16 bottom-2 lg:text-[1.5rem] text-[1.8rem] hover:text-black"
+              onClick={scrollLeft}
+              aria-label="Scroll Left"
+            >
+              <svg
+                className="h-6 w-6"
+                viewBox="0 0 30 30"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+              >
+                <circle cx="15" cy="15" r="15" fill="black" />
+
+                <path
+                  d="M22 15H8M15 8L8 15L15 22"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+            </button>
+            <button
+              className="text-[#cccaca] absolute right-16 bottom-2 lg:text-[1.5rem] text-[1.8rem] hover:text-black"
+              onClick={scrollRight}
+              aria-label="Scroll Right"
+            >
+              <svg
+                className="h-6 w-6"
+                viewBox="0 0 30 30"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+              >
+                <circle cx="15" cy="15" r="15" fill="black" />
+
+                <path
+                  d="M8 15H22M15 8L22 15L15 22"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
 
         {/* Carousel Section */}
         <div className="w-full h-[28vh] flex items-center overflow-hidden">
@@ -69,7 +151,7 @@ const FeatureProjects: React.FC = () => {
                   onMouseLeave={() => setHoveredCardIndex(null)}
                 >
                   {/* Image with Tooltip */}
-                  {/* <div className="absolute top-0 right-2 flex space-x-2">
+                  <div className="absolute top-0 right-2 flex space-x-2">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center relative group">
                       <Image
                         src={item.image}
@@ -84,27 +166,28 @@ const FeatureProjects: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                  </div> */}
+                  </div>
 
-                  {/* Title
+                  Title
                   <div className="p-2 font-poppins">
                     <h3 className="lg:text-xs font-semibold w-[65%]">
                       {item.h1}
                     </h3>
-                  </div> */}
+                  </div>
 
                   {/* Product Image */}
-                  {/* <div className="flex justify-center items-center">
+                  <div className="flex justify-center items-center">
                     <div className="w-full px-2 hover:px-0 transition-all duration-300 lg:h-[14vh] mt-1 flex justify-center items-center">
                       <Image
                         className="object-cover"
                         src={item.img}
                         alt={item.h1}
+                        loading="lazy"
                         width={400}
                         height={400}
                       />
                     </div>
-                  </div> */}
+                  </div>
 
                   {/* View Machine Button */}
                   {hoveredCardIndex === idx && (
