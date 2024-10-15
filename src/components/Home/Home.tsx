@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "../ui/button";
-import ImageSlider from "../ui/ImageSlider";
+// import ImageSlider from "../ui/ImageSlider";
 import dynamic from "next/dynamic";
-const FeatureProjects=dynamic(()=>import("./FeatureProjects"))
+const FeatureProjects=dynamic(()=>import("./FeatureProjects"));
+const ImageSlider=dynamic(()=>import("../ui/ImageSlider"));
 const Home: React.FC = () => {
   return (
     <>
