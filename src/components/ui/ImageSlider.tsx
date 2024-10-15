@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 const ImageSlider: React.FC = () => {
   return (
