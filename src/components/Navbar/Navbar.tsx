@@ -107,6 +107,7 @@ function Navbar({ className }: { className?: string }) {
               src="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728885791/Logo_l8re7f.webp"
               alt="Logo"
               fill
+              priority
               sizes="(max-width: 650px) 2vw, (max-width: 1024px) 50vw, 1200px"
               className="h-[1.4rem] w-full"
             />
