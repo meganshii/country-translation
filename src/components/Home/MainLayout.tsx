@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Home";
 const NavLinksDemo = dynamic(() => import("@/components/Home/NavLinks"), { ssr: false });
