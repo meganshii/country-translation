@@ -73,68 +73,7 @@ const FeatureProjects: React.FC = () => {
 
       <div className="flex flex-row rounded-2xl lg:my-[1vh] bg-white p-2">
         {/* Left Section with Title and Buttons */}
-        <div className="flex w-[20%] pt-2 flex-col relative items-center">
-          <div className="lg:text-2xl text-center text-[1.8rem]">
-            <h2 className="lg:text-2xl text-center  text-[1.8rem] bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-medium">
-              {relatedProduct?.title?.trim().replace(/\s+\S+$/, "") ||
-                "Default Title"}
-            </h2>
-            <h2 className="lg:text-2xl text-center  text-[1.8rem] bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold">
-              {relatedProduct?.title?.trim().match(/\S+$/) ||
-                "Default Subtitle"}
-            </h2>
-          </div>
-          <p className="text-center text-[0.7rem] font-medium pt-2 w-[60%]">
-            {relatedProduct?.description || "No description available."}
-          </p>
-          <div className="flex flex-row justify-between">
-            <button
-              className="text-[#cccaca] absolute left-16 bottom-2 lg:text-[1.5rem] text-[1.8rem] hover:text-black"
-              onClick={scrollLeft}
-              aria-label="Scroll Left"
-            >
-              <svg
-                className="h-6 w-6"
-                viewBox="0 0 30 30"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-              >
-                <circle cx="15" cy="15" r="15" fill="black" />
-
-                <path
-                  d="M22 15H8M15 8L8 15L15 22"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                />
-              </svg>
-            </button>
-            <button
-              className="text-[#cccaca] absolute right-16 bottom-2 lg:text-[1.5rem] text-[1.8rem] hover:text-black"
-              onClick={scrollRight}
-              aria-label="Scroll Right"
-            >
-              <svg
-                className="h-6 w-6"
-                viewBox="0 0 30 30"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-              >
-                <circle cx="15" cy="15" r="15" fill="black" />
-                <path
-                  d="M8 15H22M15 8L22 15L15 22"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+       
 
         {/* Carousel Section */}
         <div className="w-full h-[28vh] flex items-center overflow-hidden">
