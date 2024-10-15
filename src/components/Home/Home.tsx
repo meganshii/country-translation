@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../ui/button";
 // import ImageSlider from "../ui/ImageSlider";
 import dynamic from "next/dynamic";
 const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
