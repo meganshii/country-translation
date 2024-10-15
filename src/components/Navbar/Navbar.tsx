@@ -112,7 +112,6 @@ function Navbar({ className }: { className?: string }) {
               className="h-[1.4rem] w-full"
             />
           </Link>
-
           <button
             className="ml-2 text-gray-700 focus:outline-none"
             onClick={toggleMenu}

@@ -24,27 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload the video resource */}
-        <link
-          rel="preload"
-          href="https://res.cloudinary.com/dj4jijw2a/video/upload/v1728362941/NesscoIcons/hgjyjg9lydioz5suzjg9.webm"
-          as="video"
-          type="video/webm"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728375387/webphome_r4zgw2.webp"
-          as="image"
-          type="image/webp"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728902747/webphome_1_optimized_10_mvqf3i.avif"
-          imageSrcSet="(max-width: 450px) 100vw, (max-width: 1024px) 50vw, 1200px"
-        />
-
         {/* Asynchronously load the external PageSense script */}
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
