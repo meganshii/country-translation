@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 const FeatureProjects = dynamic(() => import("./FeatureProjects"));
-const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
+// const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
 const Home: React.FC = () => {
   return (
     <>
