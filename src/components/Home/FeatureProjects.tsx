@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
   useMemo,
-  useCallback,
 } from "react";
 import data from "../Constants/hero.json"; // Assuming this holds the 'homefeaturedata'
 
@@ -20,25 +19,7 @@ const FeatureProjects: React.FC = () => {
     return data.find((item) => item.category === "homefeaturedata")?.data;
   }, []);
 
-  // Memoized scroll functions to avoid re-creation on every render
-  const scrollLeft = useCallback(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({
-        left: -carouselRef.current.offsetWidth,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
-  const scrollRight = useCallback(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({
-        left: carouselRef.current.offsetWidth,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (carouselRef.current) {
