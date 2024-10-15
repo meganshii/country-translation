@@ -7,6 +7,7 @@ const ImageSlider: React.FC = () => {
         src="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728902747/webphome_1_optimized_10_mvqf3i.avif"
         alt="Hero Image"
         fill
+        decoding="sync"
         priority
         sizes="(max-width: 450px) 100vw, (max-width: 1024px) 50vw, 1200px"
         className="w-full h-full object-cover rounded-2xl"
