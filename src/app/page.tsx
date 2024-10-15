@@ -2,6 +2,7 @@ import MainLayout from "@/components/Home/MainLayout";
 import { Metadata } from "next";
 import React from "react";
 import seoData from "../components/Constants/hero.json"; // Importing the JSON array
+import SvgTesting from "@/components/Home/SvgTesting";
 
 // Define HomeSeoData interface to match your JSON structure
 interface HomeSeoData {
@@ -96,7 +97,6 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-
 // Home component rendering the MainLayout
 export default function Home() {
   return (
