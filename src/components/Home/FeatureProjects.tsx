@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import Image from "next/image";
 import data from "../Constants/hero.json"; // Assuming this holds the 'homefeaturedata'
 
 const FeatureProjects: React.FC = () => {
@@ -88,42 +87,15 @@ const FeatureProjects: React.FC = () => {
                   onMouseEnter={() => setHoveredCardIndex(idx)}
                   onMouseLeave={() => setHoveredCardIndex(null)}
                 >
-                  {/* Image with Tooltip */}
-                  <div className="absolute top-0 right-2 flex space-x-2">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center relative group">
-                      <Image
-                        src={item.image}
-                        alt={item.h1}
-                        width={400}
-                        height={400}
-                        className="hover:scale-90 transition-all duration-300"
-                      />
-                      <div className="hidden group-hover:flex absolute top-10 left-5 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 z-20">
-                        <p className="lg:text-[0.7rem] text-[0.7rem] text-black">
-                          {item.information}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                 
+                
                   Title
                   <div className="p-2 font-poppins">
                     <h3 className="lg:text-xs font-semibold w-[65%]">
                       {item.h1}
                     </h3>
                   </div>
-                  {/* Product Image */}
-                  <div className="flex justify-center items-center">
-                    <div className="w-full px-2 hover:px-0 transition-all duration-300 lg:h-[14vh] mt-1 flex justify-center items-center">
-                      <Image
-                        className="object-cover"
-                        src={item.img}
-                        alt={item.h1}
-                        loading="lazy"
-                        width={400}
-                        height={400}
-                      />
-                    </div>
-                  </div>
+                
                   {/* View Machine Button */}
                   {hoveredCardIndex === idx && (
                     <div className="flex w-full items-center justify-center absolute bottom-[5%]">
