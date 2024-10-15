@@ -123,7 +123,6 @@ const FeatureProjects: React.FC = () => {
                 fill="none"
               >
                 <circle cx="15" cy="15" r="15" fill="black" />
-
                 <path
                   d="M8 15H22M15 8L22 15L15 22"
                   stroke="white"
@@ -167,14 +166,12 @@ const FeatureProjects: React.FC = () => {
                       </div>
                     </div>
                   </div>
-
                   Title
                   <div className="p-2 font-poppins">
                     <h3 className="lg:text-xs font-semibold w-[65%]">
                       {item.h1}
                     </h3>
                   </div>
-
                   {/* Product Image */}
                   <div className="flex justify-center items-center">
                     <div className="w-full px-2 hover:px-0 transition-all duration-300 lg:h-[14vh] mt-1 flex justify-center items-center">
@@ -188,7 +185,6 @@ const FeatureProjects: React.FC = () => {
                       />
                     </div>
                   </div>
-
                   {/* View Machine Button */}
                   {hoveredCardIndex === idx && (
                     <div className="flex w-full items-center justify-center absolute bottom-[5%]">
