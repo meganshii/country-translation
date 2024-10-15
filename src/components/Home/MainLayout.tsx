@@ -22,14 +22,7 @@ export default function MainLayout() {
     homeTestimonialRef: useRef<HTMLDivElement>(null),
   };
 
-  const [visibleSections, setVisibleSections] = useState({
-    aboutUs: true,
-    marquee: true,
-    knowMore: true,
-    homeMachine: true,
-    testimonials: true,
-  });
-
+  
   const navItems = [
     { text: "Machines", ref: sectionRefs.homeMachineRef },
     { text: "About Us", ref: sectionRefs.aboutUsRef },
