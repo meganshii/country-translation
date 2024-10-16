@@ -1,10 +1,13 @@
 import Image from "next/image";
-
-const ImageSlider: React.FC = () => {
+import { HomeData } from "../Home/types/constant";
+interface ImageSliderLayoutProps{
+  heroData:HomeData
+}
+const ImageSlider: React.FC<ImageSliderLayoutProps> = (heroData) => {
   return (
     <div className="relative w-full mx-auto h-full">
       <Image
-        src="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728902747/webphome_1_optimized_10_mvqf3i.avif"
+        src={heroData.heroData.home[1].data?.image[0]?.src}
         alt="Hero Image"
         priority
         height={200}

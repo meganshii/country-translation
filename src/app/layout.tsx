@@ -24,8 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-       
-
         {/* Asynchronously load the external PageSense script */}
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"

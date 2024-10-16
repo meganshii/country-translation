@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cardsData from "../Constants/hero.json"; // Assuming you have your product data in this JSON
 import dynamic from "next/dynamic";
+import { HomeData } from "./types/constant";
 const HomeMachineCarousel = dynamic(
   () => import("./Common/HomeMachineCarousel")
 );
@@ -19,37 +20,26 @@ type CardItem = {
   icon: string;
   items: { className: string; text: string }[];
 };
-
-const HomeMachine: React.FC = () => {
+interface HomeMachineLayoutProps{
+ heroData:HomeData
+}
+const HomeMachine: React.FC<HomeMachineLayoutProps> = ({heroData}) => {
   const [activeStep, setActiveStep] = useState(0);
   const categories = ["all", "cup", "bowl", "bag", "plate", "straw"];
 
   // Access the product data from the 'ProductSection'
-  const productData = cardsData.find(
-    (item) => item.category === "ProductSection"
-  )?.data?.products;
+  const productData = heroData?.home[2].data
 
-  if (!productData) {
-    return <div>No products available</div>;
-  }
-
-  // Filter products based on the active step (category)
-  const filteredCardsData: CardItem[] =
-    categories[activeStep] === "all"
-      ? productData
-      : productData.filter(
-          (card: CardItem) => card.category === categories[activeStep]
-        );
+  useEffect(()=>{
+    console.log("product data",productData);
+    
+  },[])
 
   return (
     <div className="h-full w-screen max-w-screen-2xl mx-auto">
       {/* Stepper to switch between categories */}
       <Stepper onStepChange={setActiveStep} />
 
-      {/* Carousel displaying the filtered products */}
-      <div className="h-[90%] mt-4 lg:ml-0">
-        <HomeMachineCarousel filteredCardsData={filteredCardsData} />
-      </div>
     </div>
   );
 };

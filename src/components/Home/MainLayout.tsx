@@ -2,14 +2,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Home";
+import { HomeData } from "./types/constant";
 
 const NavLinksDemo = dynamic(() => import("@/components/Home/NavLinks"), {
-  ssr:true,
+  ssr: true,
 });
 const FeatureNews = dynamic(() => import("@/components/Home/FeatureNews"), {
   ssr: true,
 });
-import data from "../Constants/hero.json";
 const AnnouncementSection = dynamic(
   () => import("@/components/Home/AnnouncementSection")
 );
@@ -29,7 +29,11 @@ const HomeTestimonial = dynamic(
   { ssr: true }
 );
 
-export default function MainLayout() {
+interface MainLayoutProps {
+  homeData:HomeData; // Define the expected type for homeData
+}
+
+export default function MainLayout({ homeData }: MainLayoutProps) {
   const sectionRefs = {
     aboutUsRef: useRef<HTMLDivElement>(null),
     infiniteCardsRef: useRef<HTMLDivElement>(null),
@@ -48,19 +52,20 @@ export default function MainLayout() {
     { text: "Testimonials", ref: sectionRefs.homeTestimonialRef },
   ];
 
-  // State to track which sections are loaded
-  const [loadedSections, setLoadedSections] = useState([0]); // Start by loading the first section
+  const [loadedSections, setLoadedSections] = useState([0]);
 
   useEffect(() => {
+    console.log("MAINLAYOUT",homeData);
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = parseInt(
               (entry.target as HTMLDivElement).dataset.index!
-            ); // Fix #1: Type assertion
+            );
             if (!loadedSections.includes(index)) {
-              setLoadedSections((prev) => [...prev, index, index + 1]); // Load the next two sections
+              setLoadedSections((prev) => [...prev, index, index + 1]);
             }
           }
         });
@@ -70,7 +75,7 @@ export default function MainLayout() {
 
     Object.values(sectionRefs).forEach((ref, index) => {
       if (ref.current) {
-        (ref.current as HTMLDivElement).dataset.index = index.toString(); // Fix #2: Convert number to string
+        (ref.current as HTMLDivElement).dataset.index = index.toString();
         observer.observe(ref.current);
       }
     });
@@ -87,7 +92,7 @@ export default function MainLayout() {
   return (
     <main className="relative bg-[#f2f2f2] top-14 gap-2 h-full">
       <div className="top-2 relative">
-        <Hero />
+        <Hero heroData={homeData} />
       </div>
       <ContactIcons />
       <NavLinksDemo navItems={navItems} />
@@ -100,20 +105,22 @@ export default function MainLayout() {
           >
             <div className="flex justify-center text-3xl items-center space-x-2">
               <h2 className="bg-gradient-to-r text-3xl from-[#483d73] to-red-700 bg-clip-text text-transparent font-medium">
-                {data[0].homeMachineSection?.title
+                {homeData.home[0].homeMachineSection?.title
                   .trim()
                   .replace(/\s+\S+$/, "")}
                 <span className="font-semibold ml-1">
-                  {data[0].homeMachineSection?.title.trim().match(/\S+$/)}
+                  {homeData.home[0].homeMachineSection?.title
+                    .trim()
+                    .match(/\S+$/)}
                 </span>
               </h2>
             </div>
             <div className="text-sm w-full lg:w-full flex items-center justify-center">
               <p className="lg:w-[50%] text-sm lg:px-0 px-2 lg:text-base font-regular text-center">
-                {data[0].homeMachineSection?.subheading}
+                {homeData.home[0].homeMachineSection?.subheading}
               </p>
             </div>
-            <HomeMachine />
+            <HomeMachine  heroData={homeData} />
           </div>
         )}
 

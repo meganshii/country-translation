@@ -1,16 +1,19 @@
 import React from "react";
 import { Button } from "../ui/button";
-// import ImageSlider from "../ui/ImageSlider";
 import dynamic from "next/dynamic";
+import { HomeData } from "./types/constant";
 const FeatureProjects = dynamic(() => import("./FeatureProjects"));
 const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
-const Home: React.FC = () => {
+interface HeroLayoutProps {
+  heroData:HomeData;
+}
+const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
   return (
     <>
       <div className="relative  h-full p-0   flex flex-col items-center overflow-hidden  w-screen">
         <div className="relative  px-4 lg:px-10 w-full flex-wrap">
           <div className="w-full flex justify-center items-center h-[calc(100vh-100px)] lg:h-[52vh] rounded-3xl">
-            <ImageSlider />
+            <ImageSlider heroData={heroData} />
           </div>
         </div>
         <div className="absolute h-auto w-[80%] lg:w-auto  left-8 top-1/3 lg:top-[38%] lg:left-28 flex-col text-7xl text-white font-alexBrush"></div>

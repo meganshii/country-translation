@@ -272,7 +272,7 @@
     }
   },
   {
-    "category":"Application",
+    "category": "Application",
     "data": {
       "applications": [
         {
@@ -338,7 +338,7 @@
       ]
     }
   },
- 
+
   {
     "category": "Support",
     "data": {

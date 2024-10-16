@@ -1,35 +1,30 @@
 import MainLayout from "@/components/Home/MainLayout";
+import { HomeData } from "@/components/Home/types/constant";
 import { Metadata } from "next";
-import React from "react";
-import seoData from "../components/Constants/hero.json"; // Importing the JSON array
 
-// Define HomeSeoData interface to match your JSON structure
-interface HomeSeoData {
-  title: string;
-  description: string;
-  keywords: string;
-  openGraph: {
-    title: string;
-    description: string;
-    images: { url: string; alt: string }[];
-  };
-  robots: string;
-  alternates: {
-    canonical: string;
-  };
-  twitter: {
-    card: string;
-    site: string;
-    title: string;
-    description: string;
-    image: string;
-  };
+
+// Fetch the full home data during runtime
+async function fetchHomeData(): Promise<HomeData| null> {
+  try {
+    const res = await fetch(
+      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero.json"
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    const res = await fetch(
+      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero (m).json"
+    );
+    const data = await res.json();
+    return data;
+  }
 }
 
+// Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata(): Promise<Metadata> {
-  const metadata: HomeSeoData | undefined = seoData[0]?.homeSeoData;
+  const homeData = await fetchHomeData();
 
-  if (!metadata) {
+  if (!homeData) {
     return {
       title: "Default Title",
       description: "Default Description",
@@ -49,58 +44,46 @@ export async function generateMetadata(): Promise<Metadata> {
         canonical: "https://www.default.com",
       },
       twitter: {
-        card: "summary_large_image", // Fix: Ensure it uses the union type.
+        card: "summary_large_image",
         site: "@DefaultTwitter",
         title: "Default Twitter Title",
         description: "Default Twitter Description",
-        images: [
-          // Fix: Change 'image' to 'images'
-          {
-            url: "/default-image.webp",
-            alt: "Default Twitter Image",
-          },
-        ],
       },
     };
   }
 
+  const seoData = homeData.home[0].homeSeoData;
+
   return {
-    title: metadata.title,
-    description: metadata.description,
-    keywords: metadata.keywords,
+    title: seoData?.title,
+    description: seoData?.description,
+    keywords: seoData?.keywords,
     openGraph: {
-      title: metadata.openGraph.title,
-      description: metadata.openGraph.description,
-      images: metadata.openGraph.images.map((image) => ({
+      title: seoData?.openGraph.title,
+      description: seoData?.openGraph.description,
+      images: seoData?.openGraph.images.map((image: { url: string; alt:string; }) => ({
         url: image.url,
         alt: image.alt,
       })),
     },
-    robots: metadata.robots,
-
+    robots: seoData?.robots,
     alternates: {
-      canonical: metadata.alternates.canonical,
-    },
-    twitter: {
-      card: "summary_large_image", // Fix: Use appropriate union type
-      site: metadata.twitter.site,
-      title: metadata.twitter.title,
-      description: metadata.twitter.description,
-      images: [
-        // Fix: Change 'image' to 'images'
-        {
-          url: metadata.twitter.image,
-          alt: "Twitter Image",
-        },
-      ],
+      canonical: seoData?.alternates.canonical,
     },
   };
 }
-// Home component rendering the MainLayout
-export default function Home() {
+
+// Home component rendering the MainLayout with fetched data
+export default async function Home() {
+  const homeData = await fetchHomeData();
+
+  if (!homeData) {
+    return <p>Failed to load data.</p>;
+  }
+
   return (
     <main>
-      <MainLayout />
+      <MainLayout homeData={homeData}/>
     </main>
   );
 }
