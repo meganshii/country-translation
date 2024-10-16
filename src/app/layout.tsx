@@ -1,5 +1,6 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import NavbarDemo from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Script from "next/script";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
+        <NavbarDemo />
         {children}
         <Footer />
 
