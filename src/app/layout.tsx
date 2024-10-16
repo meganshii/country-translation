@@ -29,14 +29,14 @@ export default function RootLayout({
         {/* Asynchronously load the external PageSense script */}
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
-          strategy="lazyOnload"
+          strategy="worker"
         />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-16529601205"
         ></script>
         {/* Google tag (gtag.js)  */}
-        <Script id="gtag-init" strategy="lazyOnload">
+        <Script id="gtag-init" strategy="worker">
           {`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -52,7 +52,7 @@ export default function RootLayout({
         <Footer />
 
         {/* Zoho SalesIQ Chat Script */}
-        <Script id="zsiqchat" strategy="lazyOnload">
+        <Script id="zsiqchat" strategy="worker">
           {`
             var $zoho = $zoho || {};
             $zoho.salesiq = $zoho.salesiq || {
