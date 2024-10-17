@@ -2,18 +2,26 @@ import MainLayout from "@/components/Home/MainLayout";
 import { HomeData } from "@/components/Home/types/constant";
 import { Metadata } from "next";
 
+// Revalidate every 60 seconds (or any time period you prefer)
+export const revalidate = 60;
 
 // Fetch the full home data during runtime
-async function fetchHomeData(): Promise<HomeData| null> {
+async function fetchHomeData(): Promise<HomeData | null> {
   try {
     const res = await fetch(
-      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero.json"
+      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero.json",
+      {
+        cache: "no-store", // Ensures no caching, always fetch fresh data
+      }
     );
     const data = await res.json();
     return data;
   } catch (error) {
     const res = await fetch(
-      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero (m).json"
+      "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero (m).json",
+      {
+        cache: "no-store", // Ensures no caching for the fallback as well
+      }
     );
     const data = await res.json();
     return data;
@@ -83,7 +91,7 @@ export default async function Home() {
 
   return (
     <main>
-      <MainLayout homeData={homeData}/>
+      <MainLayout homeData={homeData} />
     </main>
   );
 }

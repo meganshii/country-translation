@@ -47,7 +47,6 @@ const nextConfig = {
   //     'lodash',            // Add Lodash for tree shaking
   //   ],  // List any additional packages you'd like to optimize
   // }
-  output:'export'
 };
 
 // Initialize the bundle analyzer
