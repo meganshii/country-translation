@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Home";
 import { HomeData } from "./types/constant";
+import AboutUs from "./AboutSection";
 
 const NavLinksDemo = dynamic(() => import("@/components/Home/NavLinks"), {
   ssr: true,
@@ -30,7 +31,7 @@ const HomeTestimonial = dynamic(
 );
 
 interface MainLayoutProps {
-  homeData:HomeData; // Define the expected type for homeData
+  homeData: HomeData; // Define the expected type for homeData
 }
 
 export default function MainLayout({ homeData }: MainLayoutProps) {
@@ -55,8 +56,8 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
   const [loadedSections, setLoadedSections] = useState([0]);
 
   useEffect(() => {
-    console.log("MAINLAYOUT",homeData);
-    
+    console.log("MAINLAYOUT", homeData);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -120,7 +121,7 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
                 {homeData.home[0].homeMachineSection?.subheading}
               </p>
             </div>
-            <HomeMachine  heroData={homeData} />
+            <HomeMachine heroData={homeData} />
           </div>
         )}
 
@@ -129,6 +130,9 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
             <AnnouncementSection />
           </div>
         )}
+        <div className="h-auto max-w-screen-2xl mx-auto lg:py-8">
+          <AboutUs heroData={homeData} />
+        </div>
 
         {loadedSections.includes(2) && (
           <div
@@ -136,31 +140,29 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
             className="max-w-screen-2xl mx-auto"
             ref={sectionRefs.infiniteCardsRef}
           >
-            <MarqueeSection />
+            <MarqueeSection heroData={homeData} />
           </div>
         )}
 
         {loadedSections.includes(3) && (
           <div id="knowMore" className="h-auto" ref={sectionRefs.knowMoreRef}>
-            <KnowMore />
+            <KnowMore heroData={homeData} />
           </div>
         )}
 
         {loadedSections.includes(4) && (
           <div id="news" ref={sectionRefs.newsFeatureRef}>
-            <FeatureNews />
+            <FeatureNews heroData={homeData} />
           </div>
         )}
 
-        {loadedSections.includes(5) && (
-          <div
-            id="testimonials"
-            className="relative bg-gradient-to-l via-purple-200 to-transparent h-screen overflow-hidden"
-            ref={sectionRefs.homeTestimonialRef}
-          >
-            <HomeTestimonial />
-          </div>
-        )}
+        <div
+          id="testimonials"
+          className="relative bg-gradient-to-l via-purple-200 to-transparent h-screen overflow-hidden"
+          ref={sectionRefs.homeTestimonialRef}
+        >
+          <HomeTestimonial heroData={homeData} />
+        </div>
       </div>
     </main>
   );

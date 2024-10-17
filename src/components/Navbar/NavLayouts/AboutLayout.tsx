@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import data from "../../Constants/Navbar/index.json";
+import Link from "next/link";
 
 interface NavItem {
   title: string;
@@ -97,7 +98,7 @@ const AboutLayout: React.FC<AboutData> = () => {
           {navLeftData
             .slice(currentIndex, currentIndex + 2)
             .map((item: NavItem, index: number) => (
-              <a key={index} href={`/about/${item.link}`}>
+              <Link key={index} href={`/about/${item.link}`}>
                 <div
                   className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
                     bgColors[index % bgColors.length]
@@ -125,7 +126,7 @@ const AboutLayout: React.FC<AboutData> = () => {
                     </p>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
         {/* Scroll Buttons */}
         <div className="hidden lg:flex w-full bg-gray-800 justify-center">

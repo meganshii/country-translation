@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import BlurImage from "../../ui/BlurImage";
 import data from "../../Constants/Navbar/index.json";
+import Link from "next/link";
 
 interface Machine {
   name: string;
@@ -171,7 +172,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             : "hover:text-[#483d78] hover:font-semibold"
         } `}
       >
-        <a
+        <Link
           className="flex w-full gap-2 flex-row"
           href={`/${countryCode}/product/${link.name}`}
         >
@@ -186,7 +187,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             />
           </div>
           <p className="w-60">{link.name}</p>
-        </a>
+        </Link>
       </div>
     ),
     [countryCode, handleCategoryClick, hoveredCategory, sidebarVariants]

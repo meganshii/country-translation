@@ -1,13 +1,14 @@
 import React from "react";
 import { SwipeCarousel } from "./Common/slider";
 import AnimatedText from "../ui/AnimatedText";
-import data from "../Constants/hero.json";
 import { TestiNomialAnimation } from "../ui/testinomialAnimation";
+import { HomeData } from "./types/constant";
+interface TestinomialLayoutProps{
+  heroData:HomeData;
+}
+const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
+  const testinomialData =heroData?.home[8]?.data;
 
-const HomeTestimonial: React.FC = () => {
-  const testinomialData = data.findLast(
-    (item) => item.category === "testinomial"
-  )?.data;
   // Provide a fallback value for `testinomialData?.testinomial`
   const testimonialItems = testinomialData?.testinomial || [];
   return (

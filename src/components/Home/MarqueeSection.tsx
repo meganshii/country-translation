@@ -1,21 +1,21 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect} from "react";
 import { InfiniteMovingCards } from "../ui/marqueeCardAnimation";
-import data from "../Constants/hero.json";
-
-export default function MarqueeSection() {
+import {HomeData } from "./types/constant";
+interface MarqueeLayoutProps {
+  heroData: HomeData;
+}
+export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
   // Memoize brand section to avoid recomputation
-  const brandSection = useMemo(
-    () => data.find((item) => item.category === "BrandsSection"),
-    []
-  );
-
+  const brandSection = heroData.home[5]?.data ;
+  useEffect(() => {
+    console.log("i am brand",heroData.home[5]);
+  });
   // Return early if no brand section is found or data is missing
-  if (!brandSection?.data) return null;
+  if (!brandSection) return null;
 
-  const { trusted = [], partners = [] } = brandSection.data;
-  const { heading1, heading2, description } = brandSection;
+  const { trusted, partners } =heroData.home[5]?.data;
 
   return (
     <div className="h-screen px-8 flex flex-col justify-center gap-12 overflow-hidden">
@@ -23,10 +23,10 @@ export default function MarqueeSection() {
         {/* Heading Section */}
         <div className="flex w-[10%] lg:w-[15%] flex-col">
           <h1 className="text-sm lg:text-2xl font-regular mt-8 font-poppins whitespace-nowrap">
-            {heading1}
+            {heroData?.home[5]?.heading1}
           </h1>
           <h2 className="text-sm lg:text-2xl font-regular mt-12 font-poppins whitespace-nowrap">
-            {heading2}
+            {heroData?.home[5]?.heading2}
           </h2>
         </div>
 
@@ -49,12 +49,11 @@ export default function MarqueeSection() {
           </div>
         </div>
       </div>
-
       {/* Description Section */}
-      {description?.text && (
+      {heroData?.home[5]?.description?.text && (
         <div className="relative flex flex-col h-[20%] items-center text-center">
           <p className="text-sm lg:text-2xl mx-4 w-full lg:w-[62%] font-poppins font-regular leading-8">
-            {description.text}
+            {heroData?.home[5]?.description.text}
           </p>
         </div>
       )}

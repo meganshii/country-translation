@@ -2,11 +2,14 @@
 import { useScroll } from "framer-motion";
 import { useEffect, useRef, useMemo } from "react";
 import Lenis from "@studio-freight/lenis";
-import data from "../Constants/hero.json";
 import dynamic from "next/dynamic";
+import { HomeData, KnowMoreSection } from "./types/constant";
 const KnowMoreCard = dynamic(() => import("./Common/KnowMoreCard"));
+interface KnowMoreLayoutProps {
+  heroData: HomeData; // Define the expected type for homeData
+}
 
-export default function KnowMore() {
+export default function KnowMore({ heroData }: KnowMoreLayoutProps) {
   const container = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null); // Persist Lenis instance
 
@@ -32,25 +35,25 @@ export default function KnowMore() {
   }, []);
 
   // Memoize data to avoid recalculating on each render
-  const knowmoreData = useMemo(() => {
-    return data.find((item) => item.category === "knowmoresection")?.data?.knowmore || [];
-  }, []);
-
+  const knowmoreData = heroData.home[6].data?.knowmore;
+  useEffect(() => {
+    console.log("knowmoreData from i", knowmoreData);
+  });
   // Memoize the rendered cards regardless of knowmoreData's length
   const renderedCards = useMemo(() => {
-    return knowmoreData.map((project, i) => {
-      const targetScale = i < knowmoreData.length - 1 ? 1 - (knowmoreData.length - i) * 0.1 : 1;
-      
+    return knowmoreData.map((project:KnowMoreSection, i: number) => {
+      const targetScale =
+        i < knowmoreData.length - 1 ? 1 - (knowmoreData.length - i) * 0.1 : 1;
+
       return (
         <KnowMoreCard
-          url={""}
+          title={""} description={""} src={""} color={""} expertiseExperience={""} expertiseAbout={""} url={""}
           key={`p_${i}`}
           i={i}
           {...project}
           progress={scrollYProgress}
           range={[i * 0.25, 1]}
-          targetScale={targetScale}
-        />
+          targetScale={targetScale}        />
       );
     });
   }, [knowmoreData, scrollYProgress]);
@@ -60,5 +63,9 @@ export default function KnowMore() {
     return null;
   }
 
-  return <main ref={container} className="h-full cursor-pointer">{renderedCards}</main>;
+  return (
+    <main ref={container} className="h-full cursor-pointer">
+      {renderedCards}
+    </main>
+  );
 }
