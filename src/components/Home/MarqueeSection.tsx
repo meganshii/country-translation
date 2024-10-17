@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect} from "react";
+import React from "react";
 import { InfiniteMovingCards } from "../ui/marqueeCardAnimation";
 import {HomeData } from "./types/constant";
 interface MarqueeLayoutProps {
@@ -9,9 +9,7 @@ interface MarqueeLayoutProps {
 export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
   // Memoize brand section to avoid recomputation
   const brandSection = heroData.home[5]?.data ;
-  useEffect(() => {
-    console.log("i am brand",heroData.home[5]);
-  });
+
   // Return early if no brand section is found or data is missing
   if (!brandSection) return null;
 

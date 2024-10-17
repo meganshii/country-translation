@@ -36,9 +36,7 @@ export default function KnowMore({ heroData }: KnowMoreLayoutProps) {
 
   // Memoize data to avoid recalculating on each render
   const knowmoreData = heroData.home[6].data?.knowmore;
-  useEffect(() => {
-    console.log("knowmoreData from i", knowmoreData);
-  });
+
   // Memoize the rendered cards regardless of knowmoreData's length
   const renderedCards = useMemo(() => {
     return knowmoreData.map((project:KnowMoreSection, i: number) => {

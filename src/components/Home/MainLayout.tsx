@@ -56,7 +56,6 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
   const [loadedSections, setLoadedSections] = useState([0]);
 
   useEffect(() => {
-    console.log("MAINLAYOUT", homeData);
 
     const observer = new IntersectionObserver(
       (entries) => {

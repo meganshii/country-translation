@@ -1,14 +1,12 @@
 import Image from "next/image";
 import { HomeData, NewsFeatureItem } from "./types/constant";
-import { Key, useEffect } from "react";
+import { Key} from "react";
 interface FeatureNewsLayoutProps {
   heroData: HomeData;
 }
 export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
   const newsfData = heroData?.home[7].data?.newsData;
-  useEffect(() => {
-    console.log("news data i am", newsfData);
-  }, []);
+
   return (
     <div className="max-w-screen-2xl mx-auto p-4 mb-12 font-poppins">
       <h2 className="text-2xl md:text-3xl mb-6 text-center">

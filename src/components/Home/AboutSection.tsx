@@ -20,9 +20,7 @@ interface AboutSectionLayoutProps {
 }
 const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
   const aboutData = heroData?.home[3]?.data;
-  useEffect(() => {
-    console.log("about section data", aboutData);
-  }, []);
+
   const [machinesSold, setMachinesSold] = useState(0);
   const [readyStockMachines, setReadyStockMachines] = useState(0);
   const statsRef = useRef<HTMLDivElement>(null);
