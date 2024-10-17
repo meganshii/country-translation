@@ -29,11 +29,9 @@ const HomeTestimonial = dynamic(
   () => import("@/components/Home/TestimonialsSection"),
   { ssr: true }
 );
-
 interface MainLayoutProps {
   homeData: HomeData; // Define the expected type for homeData
 }
-
 export default function MainLayout({ homeData }: MainLayoutProps) {
   const sectionRefs = {
     aboutUsRef: useRef<HTMLDivElement>(null),
@@ -56,7 +54,6 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
   const [loadedSections, setLoadedSections] = useState([0]);
 
   useEffect(() => {
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

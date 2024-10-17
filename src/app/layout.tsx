@@ -1,8 +1,8 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import NavbarDemo from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Script from "next/script";
+import NavLayout from "@/components/Navbar/NavLayout";
 
 // Initialize the fonts with the correct configurations and use "font-display: swap"
 const inter = Inter({
@@ -45,7 +45,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
-        <NavbarDemo />
+        <NavLayout/>
         {children}
         <Footer />
 

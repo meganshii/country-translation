@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
+import { NavbarData } from "../types/constant";
 
 interface NavItem {
   title: string;
@@ -14,24 +14,19 @@ interface NavItem {
   description?: string;
 }
 
-interface AboutData {
-  category: string;
-  data: {
-    navLeftData: NavItem[];
-    navRightData: NavItem[];
-  };
+interface AboutDataProps {
+  navData: NavbarData;
 }
 
-
-
-const AboutLayout: React.FC<AboutData> = () => {
+const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const aboutData = data.find((item) => item.category === "About")?.data;
-
-  const navLeftData = aboutData?.navLeftData || [];
-  const navRightData = aboutData?.navRightData || [];
+  const aboutData = navData?.navbar[0]?.data;
+  useEffect(() => {
+    console.log("i am from about data",aboutData);
+  }, []);
+  const navLeftData = aboutData?.navleftdata || [];
+  const navRightData = aboutData?.navrightdata || [];
 
   const scrollDown = useCallback(() => {
     setCurrentIndex((prev) =>
@@ -73,7 +68,7 @@ const AboutLayout: React.FC<AboutData> = () => {
       <div className="grid grid-cols-2 h-[80%]  sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
         {navRightData.map((item: NavItem, index: number) => (
           <div
-           key={index}
+            key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
             <a href={`/about/${item.link}`}>
@@ -95,47 +90,46 @@ const AboutLayout: React.FC<AboutData> = () => {
       <div className="hidden lg:flex ml-2 w-2 h-72 border-l border-gray-300"></div>
       {/* desktop view */}
       <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto hidden lg:flex flex-col justify-between mt-4 lg:mt-0">
-          {navLeftData
-            .slice(currentIndex, currentIndex + 2)
-            .map((item: NavItem, index: number) => (
-              <Link key={index} href={`/about/${item.link}`}>
+        {navLeftData
+          .slice(currentIndex, currentIndex + 2)
+          .map((item: NavItem, index: number) => (
+            <Link key={index} href={`/about/${item.link}`}>
+              <div
+                className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
+                  bgColors[index % bgColors.length]
+                }`}
+              >
                 <div
-                  className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
-                    bgColors[index % bgColors.length]
-                  }`}
+                  className={`h-12 w-12 mr-4 flex justify-center items-center text-2xl ${item.textcolor}`}
                 >
-                  <div
-                    className={`h-12 w-12 mr-4 flex justify-center items-center text-2xl ${item.textcolor}`}
-                  >
-                    <Image
-                      src={item.icon || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
-                      alt={item.title}
-                      className="rounded-xl cursor-pointer h-8 w-8 object-cover transform lg:hover:scale-80 transition-transform duration-200"
-                      width={24}
-                      height={24}
-                      priority={index < 4}
-                      loading={index < 4 ? "eager" : "lazy"}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs hidden lg:flex font-regular text-black line-clamp-3">
-                      {item.description}
-                    </p>
-                  </div>
+                  <Image
+                    src={item.icon || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
+                    alt={item.title}
+                    className="rounded-xl cursor-pointer h-8 w-8 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                    width={24}
+                    height={24}
+                    priority={index < 4}
+                    loading={index < 4 ? "eager" : "lazy"}
+                  />
                 </div>
-              </Link>
-            ))}
+                <div>
+                  <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs hidden lg:flex font-regular text-black line-clamp-3">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
         {/* Scroll Buttons */}
         <div className="hidden lg:flex w-full bg-gray-800 justify-center">
           {currentIndex > 0 && (
             <button
               onClick={scrollUp}
               className="absolute text-3xl invert-0 lg:top-[5%] top-[55%] rounded-full"
-            >
-            </button>
+            ></button>
           )}
         </div>
         <div className="bottom-4 hidden lg:flex w-full justify-center text-3xl">
@@ -143,8 +137,7 @@ const AboutLayout: React.FC<AboutData> = () => {
             <button
               onClick={scrollDown}
               className="absolute bg-transparent invert-0 flex justify-center items-center"
-            >
-            </button>
+            ></button>
           )}
         </div>
       </div>

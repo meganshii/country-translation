@@ -69,10 +69,12 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: seoData?.openGraph.title,
       description: seoData?.openGraph.description,
-      images: seoData?.openGraph.images.map((image: { url: string; alt:string; }) => ({
-        url: image.url,
-        alt: image.alt,
-      })),
+      images: seoData?.openGraph.images.map(
+        (image: { url: string; alt: string }) => ({
+          url: image.url,
+          alt: image.alt,
+        })
+      ),
     },
     robots: seoData?.robots,
     alternates: {
@@ -84,11 +86,9 @@ export async function generateMetadata(): Promise<Metadata> {
 // Home component rendering the MainLayout with fetched data
 export default async function Home() {
   const homeData = await fetchHomeData();
-
   if (!homeData) {
     return <p>Failed to load data.</p>;
   }
-
   return (
     <main>
       <MainLayout homeData={homeData} />

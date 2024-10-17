@@ -3,6 +3,7 @@ import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
 import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavbarData } from "../types/constant";
 
 type SupportItem = {
   title: string;
@@ -16,10 +17,11 @@ type SupportMobile = {
 interface SupportGridProps {
   supportItem: SupportItem[];
   supportMobile: SupportMobile;
+  navData:NavbarData;
 }
 
-const SupportGrid: React.FC<SupportGridProps> = () => {
-  const supportData = data.find(item => item.category === "Support")?.data;
+const SupportGrid: React.FC<SupportGridProps> = ({navData}) => {
+  const supportData =navData?.navbar[3]?.data?.
   const supportItems: SupportItem[] = supportData?.supportItem || [];
   const mobileItem: SupportMobile = supportData?.supportMobile || { mobileFirst: "", mobileSecond: "" };
   

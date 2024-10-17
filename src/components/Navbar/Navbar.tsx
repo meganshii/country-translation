@@ -1,25 +1,46 @@
 "use client";
 import React, { useState } from "react";
-import { navbarItems } from "@/components/Constants/Navbar/navbarData";
-import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "./nav-menue";
 import dynamic from "next/dynamic";
 const MenuItem = dynamic(() => import("./nav-menue"));
 const ContactForm = dynamic(() => import("../Contact/Contact"));
 import { usePathname } from "next/navigation";
+import NesscoBlackLogo from "./BlackLogo";
+import SVGComponent from "./BlueLogo";
 const CountryLayout = dynamic(() => import("./NavLayouts/CountryLayout"), {
   ssr: false,
 });
-export default function NavbarDemo() {
+import AboutLayout from "@/components/Navbar/NavLayouts/AboutLayout";
+import ApplicationLayout from "@/components/Navbar/NavLayouts/ApplicationLayout";
+import ProductLayout from "@/components/Navbar/NavLayouts/ProductLayout";
+import ResourceGrid from "@/components/Navbar/NavLayouts/ResourceLayout";
+import SupportGrid from "@/components/Navbar/NavLayouts/SupportLayout";
+import VideoGrid from "@/components/Navbar/NavLayouts/VideoLayout";
+import { NavbarData } from "./types/constant";
+
+interface NavbarItem {
+  name: string;
+  link: string;
+  component?: React.ReactNode;
+  type?: string;
+}
+interface navLayoutProps{
+  navData:NavbarData;
+}
+export default function NavbarDemo({navData}:navLayoutProps) {
   return (
     <div className="relative lg:h-auto lg:mt-0 flex items-center justify-between lg:justify-center">
-      <Navbar className="top-0" />
+      <Navbar navData={navData} className="top-0" />
     </div>
   );
 }
-function Navbar({ className }: { className?: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavbarProps {
+  className?: string;
+  navData: NavbarData;
+}
+
+function Navbar({ className, navData }: NavbarProps) {  const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -35,6 +56,57 @@ function Navbar({ className }: { className?: string }) {
     setExpandedItem(expandedItem === item ? null : item);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearchValue(e.target.value);
+  const navbarItems: NavbarItem[] = [
+    {
+      name: "About Us",
+      link: "about",
+      component: <AboutLayout navData={navData}/>,
+    },
+    {
+      name: "Products",
+      link: "product",
+      component: (
+        <ProductLayout
+          setHoveredItem={() => {}}
+          setHeading={() => {}}
+          setIsVisible={() => {}}
+        />
+      ),
+    },
+    {
+      name: "Application",
+      link: "application",
+      component: <ApplicationLayout navData={navData}/>,
+    },
+    {
+      name: "Support",
+      link: "support",
+      component: (
+        <SupportGrid
+          navData={navData}
+          supportItem={[]}
+          supportMobile={{
+            mobileFirst: "",
+            mobileSecond: "",
+          }}
+        />
+      ),
+    },
+    {
+      name: "Resources",
+      link: "resources",
+      component: <ResourceGrid supporItem={[]} ResourcesMobile={[]} />,
+    },
+    {
+      name: "Video",
+      link: "videos",
+      component: <VideoGrid />,
+    },
+    {
+      name: "Contact",
+      link: "contact",
+    },
+  ];
   return (
     <div
       className={`fixed flex w-full ${
@@ -48,13 +120,7 @@ function Navbar({ className }: { className?: string }) {
       <div className="hidden px-12 lg:flex w-full">
         <div className="w-1/5  flex items-center">
           <Link href="/" className="w-full h-full flex items-center">
-            <Image
-              src="https://assets.nesscoindustries.com/public/assets/Logo.png"
-              alt="Logo"
-              width={181}
-              height={48}
-              className="h-[1.4rem]  w-20"
-            />
+            <SVGComponent />
           </Link>
         </div>
         <div className="w-3/5  flex items-center justify-center">
@@ -103,14 +169,7 @@ function Navbar({ className }: { className?: string }) {
       <div className=" lg:hidden  border-b-2 flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
           <Link href="/" className="h-6 flex items-center">
-            <Image
-              src="https://res.cloudinary.com/dj4jijw2a/image/upload/v1728885791/Logo_l8re7f.webp"
-              alt="Logo"
-              fill
-              priority
-              sizes="(max-width: 650px) 2vw, (max-width: 1024px) 50vw, 1200px"
-              className="h-[1.4rem] w-full"
-            />
+            <NesscoBlackLogo />
           </Link>
           <button
             className="ml-2 text-gray-700 focus:outline-none"

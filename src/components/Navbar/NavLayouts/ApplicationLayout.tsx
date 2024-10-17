@@ -1,5 +1,4 @@
-import { useState } from "react";
-// Dynamically import the icons and other UI components
+import { useEffect, useState } from "react";
 const HandBurgerBox = dynamic(() => import("../../Icons/HandBurgerBox"), { ssr: false });
 const LunchBox = dynamic(() => import("../../Icons/LunchBox"), { ssr: false });
 const PaperBlank = dynamic(() => import("../../Icons/PaperBlank"), { ssr: false });
@@ -16,6 +15,7 @@ const PositionAwareButton = dynamic(() => import("../../ui/PositionAwareButton")
 import { Button } from "../../ui/button";
 import data from "../../Constants/Navbar/index.json";
 import dynamic from "next/dynamic";
+import { NavbarData } from "../types/constant";
 interface Product {
   id: string;
   name: string;
@@ -36,10 +36,15 @@ const componentList = [
   PaperBlank,
   HandBurgerBox,
 ];
-export default function ApplicationLayout() {
-  const applicationData =
-    data.find((item) => item.category === "Application")?.data.applications ||
-    [];
+interface ApplicationLayoutProps{
+  navData:NavbarData;
+}
+export default function ApplicationLayout({navData}:ApplicationLayoutProps) {
+  const applicationData =navData?.navbar[2].data?.applications;
+  useEffect(()=>{
+   console.log("i am inside applciation alyout",applicationData);
+   
+  })
   const [activeProduct, setActiveProduct] = useState<Product>(
     applicationData[0]
   );
