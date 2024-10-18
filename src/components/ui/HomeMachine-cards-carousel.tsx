@@ -74,7 +74,7 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const contextValue = useMemo(() => ({ onCardClose: handleCardClose, currentIndex }), [handleCardClose, currentIndex]);
 
   const renderCarouselItems = useCallback((start: number, end: number) => (
-    <div className={cn("flex flex-row gap-4 pl-[5%]", "max-w-7xl mx-auto")}>
+    <div className={cn("flex flex-row gap-4 pl-[2%]", "max-w-7xl mx-auto")}>
       {items.slice(start, end).map((item, index) => (
         <div key={`card-${start + index}`} className="last:pr-[5%] md:last:pr-[4%] rounded-3xl">
           {item}

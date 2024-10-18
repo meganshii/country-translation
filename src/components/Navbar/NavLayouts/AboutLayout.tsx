@@ -13,31 +13,23 @@ interface NavItem {
   textcolor?: string;
   description?: string;
 }
-
 interface AboutDataProps {
   navData: NavbarData;
 }
-
 const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const aboutData = navData?.navbar[0]?.data;
-  useEffect(() => {
-    console.log("i am from about data",aboutData);
-  }, []);
   const navLeftData = aboutData?.navleftdata || [];
   const navRightData = aboutData?.navrightdata || [];
-
   const scrollDown = useCallback(() => {
     setCurrentIndex((prev) =>
       prev < navLeftData.length - 2 ? prev + 1 : prev
     );
   }, [navLeftData]);
-
   const scrollUp = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
   }, []);
-
   const handleWheel = useCallback(
     (e: WheelEvent) => {
       const isScrollingDown = e.deltaY > 0;
@@ -45,7 +37,6 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
     },
     [scrollDown, scrollUp]
   );
-
   useEffect(() => {
     const carouselElement = carouselRef.current;
     if (carouselElement) {

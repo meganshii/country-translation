@@ -47,7 +47,7 @@ export  function InfiniteMovingCards({
               alt={item.alt}
               width={100}
               height={100}
-              className="object-contain w-full h-auto"
+              className="object-contain h-14 w-14"
             />
           </li>
         ))}

@@ -1,8 +1,7 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-
-import data from "../../Constants/hero.json";
+import { HomeData } from "../types/constant";
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -14,17 +13,18 @@ const SPRING_OPTIONS = {
   stiffness: 400,
   damping: 50,
 };
+interface ImageSliderLayoutProps {
+  heroData: HomeData;
+}
 
-const testinomialData = data.findLast(
-  (item) => item.category === "testinomial"
-)?.data;
-const testimonialItems = testinomialData?.Testinomialvideos || [];
-
-export const SwipeCarousel: React.FC = () => {
+export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
+  heroData,
+}) => {
   const [videoIndex, setVideoIndex] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [currentVideoLink, setCurrentVideoLink] = useState<string>("");
-
+  const testinomialData = heroData?.home[8]?.data;
+  const testimonialItems = testinomialData?.Testinomialvideos || [];
   const dragX = useMotionValue(0);
 
   useEffect(() => {
@@ -32,7 +32,9 @@ export const SwipeCarousel: React.FC = () => {
       const x = dragX.get();
 
       if (x === 0) {
-        setVideoIndex((pv) => (pv === testimonialItems.length - 1 ? 0 : pv + 1));
+        setVideoIndex((pv) =>
+          pv === testimonialItems.length - 1 ? 0 : pv + 1
+        );
       }
     }, AUTO_DELAY);
 
@@ -48,8 +50,6 @@ export const SwipeCarousel: React.FC = () => {
       setVideoIndex((pv) => pv - 1);
     }
   };
-
- 
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -81,15 +81,11 @@ export const SwipeCarousel: React.FC = () => {
               muted
               className="w-full h-full object-cover rounded-xl"
             />
-            <div className="absolute bottom-4 right-0 transform -translate-x-1/2">
-              
-            </div>
+            <div className="absolute bottom-4 right-0 transform -translate-x-1/2"></div>
           </motion.div>
         ))}
       </motion.div>
-
-      <Dots videoIndex={videoIndex} setVideoIndex={setVideoIndex} />
-
+      {/* <Dots testinomialData={testinomialData} videoIndex={videoIndex} setVideoIndex={setVideoIndex} /> */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[9995]">
           <div className="relative bg-white rounded-xl overflow-hidden max-w-3xl w-full">
@@ -97,8 +93,7 @@ export const SwipeCarousel: React.FC = () => {
               aria-label="CloseModal"
               onClick={closeModal}
               className="absolute top-0 right-0 bg-white p-1 rounded-full text-black z-50"
-            >
-            </button>
+            ></button>
             <div className="relative w-full pt-[56.25%]">
               <iframe
                 src={currentVideoLink}
@@ -114,16 +109,20 @@ export const SwipeCarousel: React.FC = () => {
     </div>
   );
 };
-
+type Testinomialvideos={
+  src:string;
+  youtubeLink:string;
+}
 type DotsProps = {
   videoIndex: number;
   setVideoIndex: React.Dispatch<React.SetStateAction<number>>;
+  testinomialData:Testinomialvideos[];
 };
 
-const Dots: React.FC<DotsProps> = ({ videoIndex, setVideoIndex }) => {
+const Dots: React.FC<DotsProps> = ({ videoIndex, setVideoIndex,testinomialData }) => {
   return (
     <div className="absolute mt-1 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-      {testimonialItems.map((_, idx) => (
+      {testinomialData.map((_, idx) => (
         <div
           key={idx}
           onClick={() => setVideoIndex(idx)}

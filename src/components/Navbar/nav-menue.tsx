@@ -82,7 +82,6 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
       <a
         className="invert-0 text-base font-light"
         href={`/${link}`}
-        
       >
         {item}
       </a>
@@ -97,7 +96,7 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
               ) || ["our-company"].includes(componentCodeourCompany)
                 ? "bg-[#222222]"
                 : "bg-white"
-            } dark:bg-black overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl`}
+            } dark:bg-black overflow-hidden border border-black/[0.2]  shadow-xl`}
           >
             <motion.div layout className="w-screen mx-auto h-full px-12">
               {children}

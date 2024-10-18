@@ -92,7 +92,7 @@ function Navbar({ className, navData }: NavbarProps) {
     {
       name: "Video",
       link: "videos",
-      component: <VideoGrid navData={navData}/>,
+      component: <VideoGrid navData={navData} />,
     },
     {
       name: "Contact",

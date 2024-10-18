@@ -1,5 +1,6 @@
 import { NavbarData } from "@/components/Navbar/types/constant";
 import NavbarDemo from "./Navbar";
+
 async function fetchNavData(): Promise<NavbarData | null> {
   try {
     const res = await fetch(

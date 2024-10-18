@@ -49,7 +49,7 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
             {testinomialData?.thirdsubheading}
           </div>
         </div>
-        <SwipeCarousel />
+        <SwipeCarousel heroData={heroData} />
       </div>
       <div className="w-full h-[55%] mt-8 lg:mt-0 lg:w-2/3 relative lg:h-full">
         <div className="ml-0 lg:ml-14 h-screen mask-gradient rounded-md flex flex-col antialiased dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
