@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 import Script from "next/script";
 import NavLayout from "@/components/Navbar/NavLayout";
+import FooterLayout from "@/components/Footer/FooterLayout";
 
 // Initialize the fonts with the correct configurations and use "font-display: swap"
 const inter = Inter({
@@ -45,10 +46,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
-        <NavLayout/>
+        <NavLayout />
         {children}
-        <Footer />
-
+        <FooterLayout />
         {/* Zoho SalesIQ Chat Script */}
         <Script id="zsiqchat" strategy="lazyOnload">
           {`
