@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { NavbarData } from "../types/constant";
 
 type SupportItem = {
@@ -17,8 +16,6 @@ interface ResourceGridProps {
 
 const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
   const supportData = navData?.navbar[4]?.data;
-  const pathname = usePathname() || "";
-  const countryCode = pathname.split("/")[1]?.toLowerCase();
   const DataBankItem = supportData?.DataBankItem || [];
 
   const carouselRef = useRef<HTMLDivElement>(null);

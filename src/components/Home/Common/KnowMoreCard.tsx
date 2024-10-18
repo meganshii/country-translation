@@ -25,7 +25,6 @@ const KnowMoreCard: React.FC<KnowMoreCardProps> = ({
   title,
   description,
   src,
-  url,
   color,
   expertiseExperience,
   expertiseAbout,

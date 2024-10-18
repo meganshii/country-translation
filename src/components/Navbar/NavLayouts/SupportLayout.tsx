@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { NavbarData } from "../types/constant";
 
 type SupportItem = {
@@ -59,8 +58,6 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
 
   // Determine whether arrows should be shown based on item count
   const shouldShowArrows = supportItems.length > 4;
-  const pathname = usePathname() || "";
-  const countryCode = pathname.split("/")[1]?.toLowerCase();
 
   // Function to chunk items into groups of 4
   const chunkItems = (arr: SupportItem[], size: number): SupportItem[][] =>
