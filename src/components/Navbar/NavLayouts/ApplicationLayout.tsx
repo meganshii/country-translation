@@ -13,7 +13,6 @@ const PaperStraw = dynamic(() => import("../../Icons/PaperStraw"), { ssr: false 
 const PopcornTub = dynamic(() => import("../../Icons/PopcornTub"), { ssr: false });
 const PositionAwareButton = dynamic(() => import("../../ui/PositionAwareButton"), { ssr: false });
 import { Button } from "../../ui/button";
-import data from "../../Constants/Navbar/index.json";
 import dynamic from "next/dynamic";
 import { NavbarData } from "../types/constant";
 interface Product {

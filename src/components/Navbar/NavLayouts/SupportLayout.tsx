@@ -1,35 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
-import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavbarData } from "../types/constant";
 
 type SupportItem = {
   title: string;
-  link:string;
+  link: string;
   image: string;
 };
-type SupportMobile = {
-  mobileFirst: string;
-  mobileSecond: string;
-};
+
 interface SupportGridProps {
-  supportItem: SupportItem[];
-  supportMobile: SupportMobile;
-  navData:NavbarData;
+  navData: NavbarData;
 }
 
-const SupportGrid: React.FC<SupportGridProps> = ({navData}) => {
-  const supportData =navData?.navbar[3]?.data?.
-  const supportItems: SupportItem[] = supportData?.supportItem || [];
-  const mobileItem: SupportMobile = supportData?.supportMobile || { mobileFirst: "", mobileSecond: "" };
-  
+const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
+  // Extracting support items and ensuring it's an array
+  const supportData = navData?.navbar[3]?.data;
+  const supportItems = Array.isArray(supportData?.supportItem) ? supportData.supportItem : [];
+  const mobileItem = supportData?.SupportMobile || { mobileFirst: "", mobileSecond: "" };
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   useEffect(() => {
+    console.log("i am in support comp", supportItems); // Logging the support items
     checkScrollability();
   }, []);
 
@@ -61,11 +57,12 @@ const SupportGrid: React.FC<SupportGridProps> = ({navData}) => {
     }
   };
 
- 
-
+  // Determine whether arrows should be shown based on item count
   const shouldShowArrows = supportItems.length > 4;
   const pathname = usePathname() || "";
   const countryCode = pathname.split("/")[1]?.toLowerCase();
+
+  // Function to chunk items into groups of 4
   const chunkItems = (arr: SupportItem[], size: number): SupportItem[][] =>
     arr.length ? [arr.slice(0, size), ...chunkItems(arr.slice(size), size)] : [];
 

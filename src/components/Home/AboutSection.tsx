@@ -87,7 +87,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </span>
       </h2>
 
-      <h2 className="text-lg lg:text-4xl w-full text-center font-poppins lg:px-72 py-3">
+      {/* <h2 className="text-lg lg:text-4xl w-full text-center font-poppins lg:px-72 py-3">
         {aboutData.heading
           .split(" ")
           .map((word: string, index: React.Key | null | undefined) => (
@@ -100,7 +100,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
               {word}
             </span>
           ))}
-      </h2>
+      </h2> */}
 
       <div className="text-center flex flex-col w-full lg:max-w-6xl">
         <p className="font-poppins flex lg:hidden text-sm lg:text-base font-light py-4 text-center w-full lg:w-3/5 leading-6">

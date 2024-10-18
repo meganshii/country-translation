@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
-import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
+import { NavbarData } from "../types/constant";
 
 type SupportItem = {
   title: string;
   image: string;
   bgPic: string; // Corrected property name
 };
-
-const VideoGrid: React.FC = ({}) => {
-  const videoData = data.find((item) => item.category === "Video")?.data;
+interface VideoLayoutGridProps{
+  navData: NavbarData;
+}
+const VideoGrid: React.FC<VideoLayoutGridProps> = ({navData}) => {
+  const videoData = navData?.navbar[5]?.data;
   const videoDataItem = videoData?.videoDataItem || [];
 
   const carouselRef = useRef<HTMLDivElement>(null);

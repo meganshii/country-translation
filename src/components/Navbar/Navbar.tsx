@@ -25,10 +25,10 @@ interface NavbarItem {
   component?: React.ReactNode;
   type?: string;
 }
-interface navLayoutProps{
-  navData:NavbarData;
+interface navLayoutProps {
+  navData: NavbarData;
 }
-export default function NavbarDemo({navData}:navLayoutProps) {
+export default function NavbarDemo({ navData }: navLayoutProps) {
   return (
     <div className="relative lg:h-auto lg:mt-0 flex items-center justify-between lg:justify-center">
       <Navbar navData={navData} className="top-0" />
@@ -40,7 +40,8 @@ interface NavbarProps {
   navData: NavbarData;
 }
 
-function Navbar({ className, navData }: NavbarProps) {  const [isOpen, setIsOpen] = useState(false);
+function Navbar({ className, navData }: NavbarProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -60,7 +61,7 @@ function Navbar({ className, navData }: NavbarProps) {  const [isOpen, setIsOpen
     {
       name: "About Us",
       link: "about",
-      component: <AboutLayout navData={navData}/>,
+      component: <AboutLayout navData={navData} />,
     },
     {
       name: "Products",
@@ -76,31 +77,22 @@ function Navbar({ className, navData }: NavbarProps) {  const [isOpen, setIsOpen
     {
       name: "Application",
       link: "application",
-      component: <ApplicationLayout navData={navData}/>,
+      component: <ApplicationLayout navData={navData} />,
     },
     {
       name: "Support",
       link: "support",
-      component: (
-        <SupportGrid
-          navData={navData}
-          supportItem={[]}
-          supportMobile={{
-            mobileFirst: "",
-            mobileSecond: "",
-          }}
-        />
-      ),
+      component: <SupportGrid navData={navData} />,
     },
     {
       name: "Resources",
       link: "resources",
-      component: <ResourceGrid supporItem={[]} ResourcesMobile={[]} />,
+      component: <ResourceGrid navData={navData} />,
     },
     {
       name: "Video",
       link: "videos",
-      component: <VideoGrid />,
+      component: <VideoGrid navData={navData}/>,
     },
     {
       name: "Contact",

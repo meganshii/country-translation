@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
-import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavbarData } from "../types/constant";
 
 type SupportItem = {
   title: string;
@@ -11,17 +10,13 @@ type SupportItem = {
   image: string;
   bgPic: string; // Corrected property name
 };
-type ResourcesMobile = {
-  title: string;
-  bgPic: string;
-};
+
 interface ResourceGridProps {
-  supporItem: SupportItem[];
-  ResourcesMobile: ResourcesMobile[];
+  navData: NavbarData;
 }
 
-const ResourceGrid: React.FC<ResourceGridProps> = ({}) => {
-  const supportData = data.find((item) => item.category === "Resources")?.data;
+const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
+  const supportData = navData?.navbar[4]?.data;
   const pathname = usePathname() || "";
   const countryCode = pathname.split("/")[1]?.toLowerCase();
   const DataBankItem = supportData?.DataBankItem || [];

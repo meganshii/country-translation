@@ -67,7 +67,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
           </div>
         </div>
       </div>
-      <FeatureProjects />
+      <FeatureProjects heroData={heroData}/>
     </>
   );
 };
