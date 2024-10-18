@@ -9,6 +9,7 @@ async function fetchFooterData() {
   try {
     const response = await fetch(
       "https://jsondatafromhostingertosheet.nesscoindustries.com/en/footer.json",
+      { cache: "no-store" } // Ensures fresh data fetch
     );
     const data = await response.json();
     return data.Footer[0].footerContent; // Return the relevant footer content

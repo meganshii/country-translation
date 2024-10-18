@@ -16,6 +16,9 @@ async function fetchHomeData(): Promise<HomeData | null> {
   } catch (error) {
     const res = await fetch(
       "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero (m).json",
+      {
+        cache: "no-store", // Ensures no caching for the fallback as well
+      }
     );
     const data = await res.json();
     return data;
