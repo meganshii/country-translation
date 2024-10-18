@@ -10,18 +10,12 @@ async function fetchHomeData(): Promise<HomeData | null> {
   try {
     const res = await fetch(
       "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero.json",
-      {
-        cache: "no-store", // Ensures no caching, always fetch fresh data
-      }
     );
     const data = await res.json();
     return data;
   } catch (error) {
     const res = await fetch(
       "https://jsondatafromhostingertosheet.nesscoindustries.com/en/hero (m).json",
-      {
-        cache: "no-store", // Ensures no caching for the fallback as well
-      }
     );
     const data = await res.json();
     return data;
