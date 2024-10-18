@@ -71,7 +71,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
             key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
-            <a href={`/about/${item.link}`}>
+            <a href='#'>
               <Image
                 src={item.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
                 alt={item.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
@@ -93,7 +93,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (
-            <Link key={index} href={`/about/${item.link}`}>
+            <Link key={index} href="#">
               <div
                 className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
                   bgColors[index % bgColors.length]

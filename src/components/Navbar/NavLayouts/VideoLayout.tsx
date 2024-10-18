@@ -72,7 +72,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({navData}) => {
       >
         {videoDataItem.map((item, index) => (
           <div key={index} className="flex cursor-grab flex-col space-y-4">
-            <Link href={`/`}>
+            <Link href="#">
               <div
                 className="relative flex-shrink-0 cursor-grab w-80 h-48 bg-[#f2f2f2] rounded-3xl  flex flex-col justify-center items-center"
                
@@ -154,7 +154,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({navData}) => {
             {videoDataItem.map((item, index) => (
               <div key={index} className="flex flex-col space-y-4">
                 <Link
-                  href={"/"}
+                 href="#"
                   className="flex felx-row justify-between items-center border-t-[1px]  p-4"
                 >
                   <div className="flex flex-row space-x-3">

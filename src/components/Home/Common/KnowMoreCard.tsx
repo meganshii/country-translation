@@ -90,7 +90,7 @@ const KnowMoreCard: React.FC<KnowMoreCardProps> = ({
             <span className="w-full flex flex-row justify-center items-center">
               <Link
                 className="text-base text-[#483d78] font-poppins font-semibold text-center"
-                href={url}
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
               >

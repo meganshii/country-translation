@@ -87,7 +87,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
         onScroll={checkScrollability}
       >
         {supportItems.map((item, index) => (
-          <Link key={index} className="flex flex-col space-y-4" href={`/${countryCode}/${item.link}`}>
+          <Link key={index} className="flex flex-col space-y-4" href="#">
             <div
               className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center"
               style={{ backgroundImage: `url(${bgPick.src})` }}

@@ -111,7 +111,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Desktop Menu */}
       <div className="hidden px-12 lg:flex w-full">
         <div className="w-1/5  flex items-center">
-          <Link href="/" className="w-full h-full flex items-center">
+          <Link href="#" className="w-full h-full flex items-center">
             <SVGComponent />
           </Link>
         </div>
@@ -160,7 +160,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Mobile Menu */}
       <div className=" lg:hidden  border-b-2 flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
-          <Link href="/" className="h-6 flex items-center">
+          <Link href="#" className="h-6 flex items-center">
             <NesscoBlackLogo />
           </Link>
           <button

@@ -76,7 +76,7 @@ const PositionAwareButton: React.FC<PositionAwareButtonProps> = ({
     <Link
       ref={buttonRef}
       className={styles.btnPosnawr}
-      href="/"
+      href="#"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

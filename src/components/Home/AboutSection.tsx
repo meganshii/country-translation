@@ -132,7 +132,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </div>
 
         <Link
-          href={`/about`}
+          href="#"
           className="text-[#483d73] text-center font-poppins text-base hover:font-semibold mt-4"
         >
           {aboutData.readmore}
@@ -146,7 +146,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
             className={`relative w-full lg:w-1/3 group flex flex-col items-center ${
               index === 1 ? "z-10 lg:w-[40%]" : ""
             }`}
-            href={`/about/${card.link}`}
+            href="#"
           >
             <div className="w-full">
               <div
@@ -167,7 +167,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
                 />
                 <div className="absolute bottom-0 left-0 p-4 flex justify-between items-end w-full">
                   <Link
-                    href={card.link}
+                    href="#"
                     className="text-white flex items-end text-base font-regular"
                   >
                     <div className={styles.container}>

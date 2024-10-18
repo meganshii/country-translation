@@ -90,7 +90,7 @@ const Footer: React.FC<FooterProps> = ({ footerData }) => {
               <div className="flex flex-col w-[18%] relative -left-[10rem] lg:left-16">
                 <h3 className="font-semibold font-poppins text-sm">CLIENTELE</h3>
                 <div className={styles.footerlistslink}>
-                  <Link href="/" passHref>
+                  <Link href="#" passHref>
                     <p className="font-poppins text-xs font-light mt-4 w-[5rem] hover:text-red-600 cursor-pointer">
                       {footerData.clients}
                     </p>
@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({ footerData }) => {
                 <div className="font-poppins text-xs font-light space-y-10 hover:text-red-600">
                   {/* Mapping links */}
                   {footerData.links.map((link, index) => (
-                    <Link key={index} href="/" passHref>
+                    <Link key={index} href="#" passHref>
                       <p className={styles.footeratags}>{link.link}</p>
                     </Link>
                   ))}
@@ -126,7 +126,7 @@ const Footer: React.FC<FooterProps> = ({ footerData }) => {
                 <div className="font-poppins font-light text-xs hover:text-red-600 cursor-pointer">
                   {/* Mapping services */}
                   {footerData.services.map((service, index) => (
-                    <Link key={index} href="/" passHref>
+                    <Link key={index} href="#" passHref>
                       <p className={styles.footeratags}>{service.service}</p>
                     </Link>
                   ))}
@@ -154,7 +154,7 @@ const Footer: React.FC<FooterProps> = ({ footerData }) => {
                   <div className={`${styles.footerlistslink} hover:text-red-600 cursor-pointer font-poppins text-xs`}>
                     {/* Mapping contacts */}
                     {footerData.contacts.map((contact, index) => (
-                      <Link key={index} href={contact.href} passHref>
+                      <Link key={index} href="#" passHref>
                         <p className={styles.footeratags}>{contact.name}</p>
                       </Link>
                     ))}
@@ -181,7 +181,7 @@ const Footer: React.FC<FooterProps> = ({ footerData }) => {
             </div>
             <div className="font-poppins text-xs mt-4">
               {footerData.copyright}
-              <Link href="/privacy-policy" passHref>
+              <Link href="#" passHref>
                 <p className="hover:text-red-600 cursor-pointer">{footerData.privacyPolicy}</p>
               </Link>
             </div>

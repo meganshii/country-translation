@@ -3,8 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Home";
 import { HomeData } from "./types/constant";
-import AboutUs from "./AboutSection";
-
+const AboutUs =dynamic(()=>import("./AboutSection"),{ssr:false})
 const NavLinksDemo = dynamic(() => import("@/components/Home/NavLinks"), {
   ssr: true,
 });

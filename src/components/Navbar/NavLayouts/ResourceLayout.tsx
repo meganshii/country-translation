@@ -86,7 +86,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
       >
         {DataBankItem.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
-            <Link href={`/${countryCode}/${item.link}`}>
+            <Link href="#">
               <div
                 className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center"
               
@@ -180,7 +180,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
             {DataBankItem.map((item, index) => (
               <div key={index} className="flex flex-col space-y-4">
                 <Link
-                  href={"/"}
+                  href="#"
                   className="flex felx-row justify-between items-center border-t-[1px]  p-4"
                 >
                   <div className="flex flex-row space-x-3">
