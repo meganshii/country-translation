@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
-const FeatureProjects = dynamic(() => import("./FeatureProjects"));
+import FeatureProjects from "./FeatureProjects";
 const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
 interface HeroLayoutProps {
   heroData:HomeData;
