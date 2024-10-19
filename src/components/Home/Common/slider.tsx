@@ -109,12 +109,3 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
     </div>
   );
 };
-type Testinomialvideos={
-  src:string;
-  youtubeLink:string;
-}
-type DotsProps = {
-  videoIndex: number;
-  setVideoIndex: React.Dispatch<React.SetStateAction<number>>;
-  testinomialData:Testinomialvideos[];
-};
