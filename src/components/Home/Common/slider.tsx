@@ -118,25 +118,3 @@ type DotsProps = {
   setVideoIndex: React.Dispatch<React.SetStateAction<number>>;
   testinomialData:Testinomialvideos[];
 };
-
-const Dots: React.FC<DotsProps> = ({ videoIndex, setVideoIndex,testinomialData }) => {
-  return (
-    <div className="absolute mt-1 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-      {testinomialData.map((_, idx) => (
-        <div
-          key={idx}
-          onClick={() => setVideoIndex(idx)}
-          className={`relative block cursor-pointer w-1.5 h-1.5 bg-gray-400 rounded-full overflow-hidden transition-all duration-300 ${
-            idx === videoIndex ? "w-10 rounded-lg h-1.5" : ""
-          }`}
-        >
-          <span
-            className={`absolute top-0 left-0 w-full h-full bg-white transform scale-x-0 origin-left ${
-              idx === videoIndex ? "animate-progress" : ""
-            }`}
-          ></span>
-        </div>
-      ))}
-    </div>
-  );
-};
