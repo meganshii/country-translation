@@ -17,7 +17,9 @@ function middleware(req, res, next) {
   try {
     const pathname = req.path;
 
-   
+    if (pathname.startsWith("/_next") || pathname === "/favicon.ico") {
+      return next();
+    }
     
     console.log("Current path:", pathname);
     const pathParts = pathname.split("/").filter(Boolean);
