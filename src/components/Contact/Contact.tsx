@@ -72,8 +72,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   return (
     <div className="">
-    
-
       <AnimatePresence>
         {isContactFormVisible && (
           <motion.div

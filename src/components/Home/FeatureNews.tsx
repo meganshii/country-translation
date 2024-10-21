@@ -55,9 +55,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               className="bg-white shadow-lg rounded-2xl overflow-hidden"
             >
               <div className="p-3 relative">
-                <h3 className="text-sm font-medium mb-1 pr-6">
-                  {news.title}
-                </h3>
+                <h3 className="text-sm font-medium mb-1 pr-6">{news.title}</h3>
                 <p className="text-xs text-gray-600 line-clamp-2">
                   {news.description}
                 </p>

@@ -1,3 +1,6 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 // Import the bundle analyzer using the ES module syntax
 import withBundleAnalyzer from "@next/bundle-analyzer";
 /** @type {import('next').NextConfig} */
@@ -47,9 +50,6 @@ const nextConfig = {
   //   ],  // List any additional packages you'd like to optimize
   // }
 };
-// Initialize the bundle analyzer
-const bundleAnalyzer = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
+
 // Export the configuration with the bundle analyzer applied
-export default bundleAnalyzer(nextConfig);
+export default withNextIntl(nextConfig);
