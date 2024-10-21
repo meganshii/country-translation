@@ -22,13 +22,10 @@ function middleware(req, res, next) {
   if (pathname.startsWith("/_next") || pathname === "/favicon.ico") {
     return next();
   }
-
   console.log("Current path:", pathname);
-
   const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
   const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
   const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
-
   console.log("User country ISO from URL:", userCountryISO);
   console.log("User language from URL:", userLanguage);
 
@@ -72,7 +69,9 @@ function fetchUserLocation(req) {
   console.log("Fetching client IP address...");
 
   // Get the client's IP address from request headers or use the remote address
-  const clientIP = req.headers["x-forwarded-for"]?.split(",")[0] || req.connection.remoteAddress;
+  const clientIP =
+    req.headers["x-forwarded-for"]?.split(",")[0] ||
+    req.connection.remoteAddress;
 
   if (!clientIP) {
     console.error("Unable to detect client IP address.");
@@ -108,7 +107,9 @@ function getBrowserLanguage(req) {
   const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0]; // Just the language code
   console.log("Browser language detected:", browserLanguage);
 
-  return validLocales.includes(browserLanguage) ? browserLanguage : defaultLocale;
+  return validLocales.includes(browserLanguage)
+    ? browserLanguage
+    : defaultLocale;
 }
 
 app.prepare().then(() => {
