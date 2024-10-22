@@ -133,13 +133,7 @@ function Navbar({ className, navData }: NavbarProps) {
         </div>
 
         <div className="w-1/5 flex justify-end items-center gap-4">
-          <div
-            className={`${
-              componentCode === "knowledge-center"
-                ? "bg-[#525252]"
-                : "bg-[#f2f2f2]"
-            } gap-2 px-2 h-[1.80rem]  flex items-center justify-center rounded-3xl`}
-          >
+          <div>
             <CountryLayout />
           </div>
           <ContactForm

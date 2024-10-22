@@ -1,196 +1,153 @@
-"use client";
-import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
+'use client'
 
-interface Country {
-  name: string;
-  language: string;
-  flag: string;
-  code: string;
-}
+import { useLocale, useTranslations } from 'next-intl'
+import { useRouter, usePathname, useParams } from 'next/navigation'
+import { useState, useTransition, useEffect } from 'react'
+import { locales } from '@/i18n'
 
-const CountryLayout: React.FC = () => {
-  const [isFlagOpen, setIsFlagOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [visibleCount, setVisibleCount] = useState<number>(16);
-  const [selectedCountry, setSelectedCountry] = useState<Country>({
-    name: "India",
-    language: "हिंदी",
-    flag: "https://flagcdn.com/in.svg", // Default flag URL for India
-    code: "in",
-  });
+export default function LocaleSwitcher() {
+  const t = useTranslations('localeSwitcher')
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
+  const params = useParams()
+  const [isPending, startTransition] = useTransition()
+  const [isOpen, setIsOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
-  const router = useRouter();
-  const pathname = usePathname() || "";
-
-  const countries: Country[] = [
-    { name: "Saudi Arabia", language: "العربية", flag: "https://flagcdn.com/sa.svg", code: "sa" },
-    { name: "Egypt", language: "العربية", flag: "https://flagcdn.com/eg.svg", code: "eg" },
-    { name: "Bangladesh", language: "বাংলা", flag: "https://flagcdn.com/bd.svg", code: "bd" },
-    { name: "Brazil", language: "Português", flag: "https://flagcdn.com/br.svg", code: "br" },
-    { name: "United States", language: "English", flag: "https://flagcdn.com/us.svg", code: "us" },
-    { name: "Canada", language: "English, Français", flag: "https://flagcdn.com/ca.svg", code: "ca" },
-    { name: "Germany", language: "Deutsch", flag: "https://flagcdn.com/de.svg", code: "de" },
-    { name: "France", language: "Français", flag: "https://flagcdn.com/fr.svg", code: "fr" },
-    { name: "Spain", language: "Español", flag: "https://flagcdn.com/es.svg", code: "es" },
-    { name: "Italy", language: "Italiano", flag: "https://flagcdn.com/it.svg", code: "it" },
-    { name: "Russia", language: "Русский", flag: "https://flagcdn.com/ru.svg", code: "ru" },
-    { name: "China", language: "中文", flag: "https://flagcdn.com/cn.svg", code: "cn" },
-    { name: "India", language: "हिन्दी", flag: "https://flagcdn.com/in.svg", code: "in" },
-    { name: "Japan", language: "日本語", flag: "https://flagcdn.com/jp.svg", code: "jp" },
-    { name: "South Korea", language: "한국어", flag: "https://flagcdn.com/kr.svg", code: "kr" },
-    { name: "Mexico", language: "Español", flag: "https://flagcdn.com/mx.svg", code: "mx" },
-    { name: "Argentina", language: "Español", flag: "https://flagcdn.com/ar.svg", code: "ar" },
-    { name: "Nigeria", language: "English", flag: "https://flagcdn.com/ng.svg", code: "ng" },
-    { name: "South Africa", language: "English, Afrikaans", flag: "https://flagcdn.com/za.svg", code: "za" },
-    { name: "Turkey", language: "Türkçe", flag: "https://flagcdn.com/tr.svg", code: "tr" },
-    { name: "Vietnam", language: "Tiếng Việt", flag: "https://flagcdn.com/vn.svg", code: "vn" },
-    { name: "Thailand", language: "ไทย", flag: "https://flagcdn.com/th.svg", code: "th" },
-    { name: "Colombia", language: "Español", flag: "https://flagcdn.com/co.svg", code: "co" },
-    { name: "Philippines", language: "Filipino, English", flag: "https://flagcdn.com/ph.svg", code: "ph" },
-  ];
-
-
-  // Filter countries by search term
-  const filteredCountries = countries.filter(
-    (country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      country.language.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Function to handle flag dropdown visibility
-  const handleFlagOpen = () => {
-    setIsFlagOpen(!isFlagOpen);
-  };
-
-  // Function to handle country selection
-  const handleCountrySelect = (country: Country) => {
-    setSelectedCountry(country);
-    setIsFlagOpen(false);
-    setSearchTerm("");
-
-    // Extract the current path without the country code
-    const currentPath = pathname.split("/").slice(2).join("/") || "";
-
-    // Update the route to include the new country code
-    router.push(`/${country.code}/${currentPath}`);
-  };
-
-  // Automatically update the country based on URL
   useEffect(() => {
-    if (pathname) {
-      const countryCode = pathname.split("/")[1]?.toLowerCase();
-      if (countryCode) {
-        const countryData = countries.find(
-          (country) => country.code.toLowerCase() === countryCode
-        );
-
-        if (countryData) {
-          setSelectedCountry({
-            name: countryData.name,
-            language: countryData.language,
-            flag: countryData.flag,
-            code: countryData.code,
-          });
-        }
+    const closeDropdown = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest('.locale-switcher')) {
+        setIsOpen(false)
       }
     }
-  }, [pathname, countries]);
+    document.addEventListener('click', closeDropdown)
+    return () => document.removeEventListener('click', closeDropdown)
+  }, [])
 
-  // Close flag dropdown when clicking outside
-  const countryRef = useRef<HTMLDivElement | null>(null);
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      countryRef.current &&
-      !countryRef.current.contains(event.target as Node)
-    ) {
-      setIsFlagOpen(false);
-    }
-  };
+  const onSelectChange = (nextLocale: string) => {
+    startTransition(() => {
+      const country = Array.isArray(params.country) ? params.country[0] : params.country
+      const currentLocale = Array.isArray(params.locale) ? params.locale[0] : params.locale
+      const newPathname = `/${country}/${nextLocale}${pathname.substring(pathname.indexOf(currentLocale) + currentLocale.length)}`
+      router.replace(newPathname)
+    })
+    setIsOpen(false)
+  }
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 9);
-  };
+  const filteredLocales = locales.filter(loc => 
+    loc.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
   return (
-    <div ref={countryRef} className="relative inline-block text-left">
-      <div className="flex justify-center items-center space-x-4">
-        <button
-          type="button"
-          className="inline-flex w-full rounded-md text-sm font-medium invert-0 focus:outline-none"
-          aria-expanded={isFlagOpen}
-          aria-haspopup="true"
-          onClick={handleFlagOpen}
+    <div className="locale-switcher relative inline-block text-left">
+      <button
+        type="button"
+        className={`inline-flex items-center justify-between w-full rounded-full px-4 py-1 bg-white text-sm font-medium text-gray-700 border border-gray-200 ${
+          isPending ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'
+        }`}
+        onClick={() => setIsOpen(!isOpen)}
+        disabled={isPending}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+      >
+        <span className="flex items-center">
+          <span className="mr-2 text-xl" aria-hidden="true">🌐</span>
+          <span className="font-semibold">{locale.toUpperCase()}</span>
+        </span>
+        <svg 
+          className={`ml-2 h-5 w-5 text-gray-400 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor" 
+          aria-hidden="true"
         >
-          <div className="h-[1.25rem] w-[1.25rem] flex items-center rounded-full justify-center overflow-hidden">
-            <Image
-              width={100}
-              height={100}
-              src={selectedCountry.flag}
-              alt={`${selectedCountry.name} flag`}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="flex ml-2 font-light flex-col space-y-0">
-            <p className="font-poppins invert-0 hidden lg:flex text-16 m-0 p-0 leading-tight">
-              {selectedCountry.code.toUpperCase()}
-            </p>
-            <p className="flex lg:hidden font-poppins invert-0 text-xs m-0 p-0 leading-tight">
-              {selectedCountry.name}
-            </p>
-            <p className="flex lg:hidden font-poppins invert-0 text-sm m-0 p-0 leading-tight">
-              {selectedCountry.language}
-            </p>
-          </div>
-        </button>
-      </div>
-      {isFlagOpen && (
-        <div
-          className="absolute right-[-6.5rem] mt-2 w-64 bg-white rounded-2xl shadow-lg border border-gray-300 ring-1 ring-black ring-opacity-5"
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div 
+          className="absolute right-0 mt-2 w-80 rounded-3xl bg-white border border-gray-200 focus:outline-none overflow-hidden transition-all duration-200 ease-in-out transform origin-top-right"
+          style={{animation: 'fadeInScale 0.2s ease-out forwards'}}
+          role="menu"
           aria-orientation="vertical"
+          aria-labelledby="options-menu"
         >
-          <div className="relative p-4">
-            <input
-              type="text"
-              className="w-full font-poppins text-14 px-2 py-1 pl-2 border rounded-full focus:outline-none focus:ring"
-              placeholder="Country or Language..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <div className="max-h-60 grid grid-cols-2 overflow-y-auto scrollbar-custom">
-            {filteredCountries.slice(0, visibleCount).map((country, index) => (
-              <button
-                key={index}
-                className="w-full text-left px-4 py-0 text-sm invert-0 flex items-center"
-                onClick={() => handleCountrySelect(country)}
-              >
-                <p className="px-1 w-24 hover:bg-gray-200 hover:rounded-3xl">
-                  {country.language}
-                </p>
-              </button>
-            ))}
-            {visibleCount < filteredCountries.length && (
-              <p
-                className="text-[#dc0e2a] cursor-pointer pl-4 p-2"
-                onClick={handleShowMore}
-              >
-                more...
-              </p>
-            )}
+          <div className="p-4">
+            <div className="mb-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 rounded-full bg-gray-50 text-gray-800 placeholder-gray-500 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 ease-in-out"
+                  placeholder="search language"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label={t('searchLanguages')}
+                />
+                <svg
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2 max-h-60 overflow-y-auto custom-scrollbar">
+              {filteredLocales.map((cur) => (
+                <button
+                  key={cur}
+                  className={`flex items-center justify-between w-full px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 ease-in-out ${
+                    cur === locale 
+                      ? 'bg-blue-50 text-blue-700 font-semibold' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                  role="menuitem"
+                  onClick={() => onSelectChange(cur)}
+                >
+                  <span>{cur.toUpperCase()}</span>
+                  {cur === locale && (
+                    <span className="text-blue-500">
+                      <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
+      <style jsx>{`
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #a8a8a8;
+        }
+      `}</style>
     </div>
-  );
-};
-
-export default CountryLayout;
+  )
+}

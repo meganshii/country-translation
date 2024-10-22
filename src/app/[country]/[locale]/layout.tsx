@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 import NavLayout from "@/components/Navbar/NavLayout";
 import { CountryCode, countryNames, defaultLocale } from "@/components/Constants/Navbar/config";
 
@@ -11,6 +11,7 @@ const inter = Inter({
   variable: "--inter",
   display: "swap",
 });
+
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--poppins",
@@ -20,12 +21,11 @@ const poppins = Poppins({
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
-// Generate metadata based on locale and country
 export async function generateMetadata({
   params: { country, locale },
 }: {
   params: { country: CountryCode; locale: string };
-}): Promise<Metadata> {
+}) {
   const t = await getTranslations({ locale });
   const countryName = countryNames[country] || "Country";
 
@@ -79,23 +79,33 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { country: CountryCode; locale: string };
 }) {
+  // Fallback to English if locale is not supported
   if (!locales.includes(locale as any)) {
-    locale = "en"; // Fallback to English
+    locale = "en";
   }
 
- 
-
   unstable_setRequestLocale(locale);
+
+  // Fetch translations for the locale
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    console.error(`Error loading messages for locale ${locale}:`, error);
+  }
 
   return (
     <html lang={locale}>
       <head>{generateHreflangLinks(country)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
-        {/* Navbar with internationalization */}
-        <NavLayout params={{ locale }} />
+        {/* NextIntlClientProvider wraps the children with messages and locale */}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {/* Navbar with internationalization */}
+          <NavLayout params={{ locale }} />
 
-        {/* Page content */}
-        {children}
+          {/* Page content */}
+          {children}
+        </NextIntlClientProvider>
 
         {/* External scripts */}
         <Script
