@@ -26,7 +26,9 @@ async function fetchHomeData(locale: string): Promise<HomeData | null> {
 }
 
 // Dynamically generate metadata using the fetched SEO data
-export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params: { locale },
+}: Props): Promise<Metadata> {
   // Fallback to "en" if the locale isn't supported
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -102,7 +104,7 @@ export default async function Home({ params: { locale } }: Props) {
   const t = await getTranslations({ locale });
 
   if (!homeData) {
-    return <p>{t('failedToLoadData')}</p>;
+    return <p>{t("failedToLoadData")}</p>;
   }
 
   return (

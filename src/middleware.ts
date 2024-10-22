@@ -443,7 +443,7 @@ async function fetchUserLocation(req: NextRequest) {
   // Define the services to fetch from
   const services = [
     `https://ipapi.co/${newClientIp}/json/`,
-    `https://ipinfo.io/${newClientIp}/json?token=<YOUR_IPINFO_TOKEN>`,
+    `https://ipinfo.io/${newClientIp}/json/`,
     `https://ipwhois.app/json/${newClientIp}`,
   ];
 
