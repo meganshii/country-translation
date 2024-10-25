@@ -14,6 +14,7 @@ export interface NavLeftData {
   }
   
   export interface AboutData {
+    About: any;
     category: string;
     data: {
       navleftdata: NavLeftData[];

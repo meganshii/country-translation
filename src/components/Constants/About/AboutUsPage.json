@@ -1,0 +1,345 @@
+{
+  "aboutSeoData": {
+    "title": "About Manufacturer and Supplier - Nessco India",
+    "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+    "keywords": "Nessco India",
+    "openGraph": {
+      "title": "About Manufacturer and Supplier - Nessco India",
+      "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+      "images": [
+        {
+          "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+          "alt": "Fully Automatic Paper Cup Making Machine"
+        }
+      ]
+    },
+    "robots": "index, follow",
+
+    "alternates": {
+      "canonical": "https://www.nesscoindia.com"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@NesscoIndia",
+      "title": "About Manufacturer - Nessco India",
+      "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+      "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+    }
+  },
+  "Page1Data": {
+    "video": "/assets/about/Aboutmain.mp4",
+    "title": "About Us",
+    "getaQuote": "Get a Quote",
+    "mainImg": "/assets/about/centreimg.svg",
+    "leftBorderImg": "/assets/about/LeftBorderImg.svg",
+    "rightBorderImg": "/assets/about/RightBorderImg.svg",
+    "description": "Our mission is to provide innovative, high-quality paper cup machines that enable efficient, eco-friendly production. We envision leading the industry in sustainable manufacturing, setting the standard for environmentally responsible packaging solutions."
+  },
+  "missionvissionContent": {
+    "title": "Mission & Vision",
+    "button":"Read more",
+    "slides": [
+      {
+        "title": "Mission",
+        "imageSrc": "/assets/about/mission.svg",
+        "description": "Our company has achieved a significant milestone by selling over 1,000 machines globally, with key markets including Russia, Italy, and the USA. This accomplishment reflects our commitment to quality, innovation, and customer satisfaction."
+      },
+      {
+        "title": "Vision",
+        "imageSrc": "/assets/about/vission.svg",
+        "description": "Our goal for FY24 is ambitious yet achievable: to become the highest-selling paper cup machine manufacturer globally. This vision is driven by our commitment to excellence, innovation, and customer satisfaction.",
+        "points": [
+          "Product Innovation and Quality Enhancement",
+          "Market Expansion",
+          "Customer-Centric Approach",
+          "Brand Building and Marketing"
+        ]
+      },
+      {
+        "title": "Culture",
+        "imageSrc": "/assets/about/cultureicon.svg",
+        "description": "At the core of our success lies our vibrant and inclusive company culture. We believe that a strong, positive culture not only fosters employee satisfaction and productivity but also drives innovation and excellence in every aspect of our business.",
+        "values": [
+          {
+            "imageSrc": "/assets/about/stand.svg",
+            "text": "Innovation and Creativity"
+          },
+          {
+            "imageSrc": "/assets/about/stand.svg",
+            "text": "Customer Centricity"
+          },
+          {
+            "imageSrc": "/assets/about/stand.svg",
+            "text": "Integrity and Transparency"
+          },
+          {
+            "imageSrc": "/assets/about/stand.svg",
+            "text": "Collaboration and Teamwork"
+          }
+        ]
+      }
+    ]
+  },
+
+  "companyContent": {
+    "title": "Our Company",
+    "description": "Nesscoindia is a leading manufacturer of high-quality paper cup machines. With a focus on innovation and customer satisfaction, we specialize in producing state-of-the-art machinery designed to meet the demands of the modern paper cup industry. Our machines are renowned for their durability, efficiency, and precision, helping businesses around the world produce eco-friendly paper cups with ease. At Nesscoindia, we are committed to sustainability and excellence, ensuring that our products not only meet but exceed industry standards.",
+    "imageWithDescription": [
+      {
+        "img": "/assets/about/16.png"
+      },
+      {
+        "img": "/assets/about/17.png"
+      },
+      {
+        "img": "/assets/about/nessco-team.webp"
+      },
+      {
+        "img": "/assets/about/banner3.jpg"
+      }
+    ]
+  },
+  "Heading": {
+    "title": "Our Strength"
+  },
+  "cards": [
+    {
+      "description": "We leverage cutting-edge technology to design and manufacture advanced paper cup machines, ensuring high efficiency and precision in production.",
+      "title": "Innovative Technology",
+      "src": "/assets/about/ourcompany/16.svg",
+      "video": "/assets/lowgif.gif"
+    },
+    {
+      "description": "Our stringent quality control processes guarantee that every machine we produce meets the highest industry standards, delivering reliable and consistent performance.",
+      "title": "Quality Assurance",
+      "src": "/assets/about/ourcompany/17.svg",
+      "video": "/assets/giftwo.gif"
+    },
+    {
+      "description": "We prioritize our customers' needs by offering personalized solutions and exceptional after-sales support, fostering long-term partnerships.",
+      "title": "Customer-Centric Approach",
+      "src": "/assets/about/ourcompany/18.svg",
+      "video": "/assets/gifthree.gif"
+    },
+    {
+      "description": "Dedicated to environmental responsibility, we focus on producing eco-friendly machines that help businesses reduce their carbon footprint and promote sustainable practices.",
+      "title": "Sustainability Commitment",
+      "src": "/assets/about/ourcompany/19.svg",
+      "video": "/assets/giffour.gif"
+    }
+  ],
+  "galleryfour": {
+    "heading": "The Pink City",
+    "galleryImages": [
+      {
+        "src": "/assets/pinkcity/palace2.webp",
+        "paragraph": "In the Pink City of Jaipur, elephants hold a special place in its cultural and historical heritage. These majestic creatures are an integral part of the city's royal traditions, often seen adorned in vibrant colors and elaborate decorations during festivals and ceremonies."
+      },
+      {
+        "src": "/assets/pinkcity/palace2.webp",
+        "paragraph": "In the Pink City of Jaipur, elephants hold a special place in its cultural and historical heritage. These majestic creatures are an integral part of the city's royal traditions, often seen adorned in vibrant colors and elaborate decorations during festivals and ceremonies."
+      },
+      {
+        "src": "/assets/pinkcity/palace2.webp",
+        "paragraph": "In the Pink City of Jaipur, elephants hold a special place in its cultural and historical heritage. These majestic creatures are an integral part of the city's royal traditions, often seen adorned in vibrant colors and elaborate decorations during festivals and ceremonies."
+      },
+      {
+        "src": "/assets/pinkcity/palace2.webp",
+        "paragraph": "In the Pink City of Jaipur, elephants hold a special place in its cultural and historical heritage. These majestic creatures are an integral part of the city's royal traditions, often seen adorned in vibrant colors and elaborate decorations during festivals and ceremonies."
+      }
+    ]
+  },
+
+  "Sustainabilityheading": {
+    "title": " Sustainability",
+    "Approach":"Our Approach"
+
+  },
+  "slides": [
+    {
+      "id": 0,
+      "img": "/assets/about/sustain/20.svg",
+      "title": "Carbon Emission Control",
+      "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations. We employ cutting-edge technologies and processes that prioritize energy efficiency and waste reduction."
+    },
+    {
+      "id": 1,
+      "img": "/assets/about/sustain/21.svg",
+      "title": "Energy Efficiency",
+      "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations."
+    },
+    {
+      "id": 2,
+      "img": "/assets/about/sustain/22.svg",
+      "title": "Waste Reduction",
+      "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations. We employ cutting-edge technologies and processes that prioritize energy efficiency and waste reduction."
+    },
+    {
+      "id": 3,
+      "img": "/assets/about/sustain/23.svg",
+      "title": "Water Conservation",
+      "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations. We employ cutting-edge technologies and processes that prioritize energy efficiency and waste reduction."
+    },
+    {
+      "id": 4,
+      "img": "/assets/about/sustain/24.svg",
+      "title": "Green Manufacturing",
+      "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations. We employ cutting-edge technologies and processes that prioritize energy efficiency and waste reduction."
+    }
+  ],
+
+  "Featureheading": {
+    "title": "Featured Projects",
+    "featuredpage":"Nessco",
+    "featuredpagehighlight":"Featured Projects",
+    "button":"Read more",
+    "banner1":"Innovative packaging solution,",
+    "banner2":" One Machine at a Time",
+    "viewmachine":"View Machine"
+  },
+  "machines": [
+    {
+      "id": 1,
+      "title": "NS-3000",
+      "description": "A paper cup machine is a specialized piece of equipment designed to produce disposable paper cups. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine1.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    },
+    {
+      "id": 2,
+      "title": "NS-4000",
+      "description": "This machine is designed to produce paper bowls and is widely used in the food packaging industry. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine4.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    },
+    {
+      "id": 3,
+      "title": "NS-5000",
+      "description": "A high-speed machine capable of producing large quantities of paper cups with superior quality. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine3.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    },
+    {
+      "id": 4,
+      "title": "NS-6000",
+      "description": "This advanced machine is designed for the production of eco-friendly paper cups with precision. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine4.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    },
+    {
+      "id": 5,
+      "title": "NS-7000",
+      "description": "An innovative machine for creating multi-layered paper cups, perfect for hot beverages. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine1.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    },
+    {
+      "id": 6,
+      "title": "NS-8000",
+      "description": "A state-of-the-art machine designed for high-efficiency production of customized paper cups. These cups are widely used for beverages such as coffee, tea, and soft drinks. The machine automates the entire process, ensuring efficient and consistent production.",
+      "mainImage": "/assets/about/machine6.png",
+      "mobileimg": "/assets/about/sustain/machine.svg"
+    }
+  ],
+
+  "grid": [
+    {
+      "id": 11,
+      "title": "Rectangular flat bottom machines  for Horeca",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging.offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packagingoffers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging.offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging.offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging...",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154326/seojp1tcqfwxlcwenxgg.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 12,
+      "title": "Paper based disposable plant in Morbi, Gujarat",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154372/ogjdfopiqokhhwxevqpo.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 13,
+      "title": "Paper based disposable plant in Morbi, Gujarat",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154374/fycsmnx7nagy2ibostbe.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 14,
+      "title": "Rectangular flat bottom machines  for Horeca",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154372/ewihvsznhw2k3u0ioyxi.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 15,
+      "title": "Rectangular flat bottom machines  for Horeca",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154326/seojp1tcqfwxlcwenxgg.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 16,
+      "title": "Paper based disposable plant in Morbi, Gujarat",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "/assets/featuredprojects/3.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 17,
+      "title": "Paper based disposable plant in Morbi, Gujarat",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154372/ogjdfopiqokhhwxevqpo.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    },
+    {
+      "id": 18,
+      "title": "Paper based disposable plant in Morbi, Gujarat",
+      "description": "Nessco offers a leakage-free dome lid base solution designed to enhance the safety and reliability of food and beverage packaging. ",
+      "mainImage": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154374/fycsmnx7nagy2ibostbe.png",
+      "mobileimg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729154485/machine_vackdm.svg"
+    }
+  ],
+  "Awardheading": {
+    "title": "Awards",
+    "description": " Recognition affirms our purpose, and shows us we’re on the right track.Look through the awards we’ve accumulated, and the certifications that mark the checkpoints ensuring our progress."
+  },
+  "awards": [
+    {
+      "id": 1,
+      "title": "ISO 9001 Certified",
+      "description": "Recognition affirms our purpose, and shows us we’re on the right track.",
+      "image": "/assets/about/award/icon6.svg"
+    },
+    {
+      "id": 2,
+      "title": "Taxpayers Award",
+      "description": "Look through the awards we’ve accumulated.",
+      "image": "/assets/about/award/icon2.svg"
+    },
+    {
+      "id": 3,
+      "title": "Child Labour Free",
+      "description": "The certifications that mark the checkpoints ensuring our progress.",
+      "image": "/assets/about/award/icon4.svg"
+    },
+    {
+      "id": 4,
+      "title": "Star Export House",
+      "description": "Recognition affirms our purpose, and shows us we’re on the right track.",
+      "image": "/assets/about/award/icon1.svg"
+    },
+    {
+      "id": 5,
+      "title": "CE Certified",
+      "description": "Look through the awards we’ve accumulated.",
+      "image": "/assets/about/award/icon3.svg"
+    },
+    {
+      "id": 6,
+      "title": "RoHS Certified",
+      "description": "The certifications that mark the checkpoints ensuring our progress.",
+      "image": "/assets/about/award/icon5.svg"
+    }
+  ]
+}
