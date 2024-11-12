@@ -38,7 +38,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
         </div>
 
         {/* // Cards Section */}
-        <div className=" grid lg:grid-row-1 lg:grid-cols-5 gap-5 flex-col p-9 ">
+        <div className=" grid lg:grid-row-1 lg:grid-cols-5 gap-5 flex-col p-9 bg-[#f2f2f2]">
           {homecardData.map((card, index) => (
             <div key={index} className=" lg:h-[20rem] h-[20rem]  items-center py-10 rounded-xl flex flex-col relative  shadow-lg hover:shadow-2xl hover:scale-80  transform transition-transform duration-300 group bg-gradient-to-t from-[#f2f2f2] to-white ">
               <h1 className="font-poppins font-semibold text-3xl  relative text-center text-[#636363] group-hover:text-red-700">{card.title}</h1>

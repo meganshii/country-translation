@@ -10,6 +10,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import dynamic from "next/dynamic";
 // import { IoIosCloseCircle } from "react-icons/io";
 import { AboutItem } from "./types/constant";
+import Link from "next/link";
 interface HomeLayoutProps{
   aboutData:AboutItem;
 }
@@ -128,6 +129,7 @@ const ExpandableCardDemo:React.FC<HomeLayoutProps>=({aboutData})=> {
                   width="30"
                   height="30"
                   viewBox="0 0 30 30"
+                
                 >
                   <path d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16.414,15 c0,0,3.139,3.139,3.293,3.293c0.391,0.391,0.391,1.024,0,1.414c-0.391,0.391-1.024,0.391-1.414,0C18.139,19.554,15,16.414,15,16.414 s-3.139,3.139-3.293,3.293c-0.391,0.391-1.024,0.391-1.414,0c-0.391-0.391-0.391-1.024,0-1.414C10.446,18.139,13.586,15,13.586,15 s-3.139-3.139-3.293-3.293c-0.391-0.391-0.391-1.024,0-1.414c0.391-0.391,1.024-0.391,1.414,0C11.861,10.446,15,13.586,15,13.586 s3.139-3.139,3.293-3.293c0.391-0.391,1.024-0.391,1.414,0c0.391,0.391,0.391,1.024,0,1.414C19.554,11.861,16.414,15,16.414,15z"></path>
                 </svg>
@@ -158,13 +160,13 @@ const ExpandableCardDemo:React.FC<HomeLayoutProps>=({aboutData})=> {
                     layoutId={`image-${active.title}-${id}`}
                     className="absolute inset-0 flex items-center justify-center z-20"
                   >
-                    <Image
-                      width={200}
-                      height={200}
-                      src={active.src}
-                      alt={active.title}
-                      className="w-20 h-20 md:w-36 md:h-36 lg:h-24 lg:w-24 sm:rounded-lg object-cover"
-                    />
+                      <Image
+                        width={200}
+                        height={200}
+                        src={active.src}
+                        alt={active.title}
+                        className="w-20 h-20 md:w-36 md:h-36 lg:h-24 lg:w-24 sm:rounded-lg object-cover  filter invert-0"
+                      />
                   </motion.div>
                 </div>
 
@@ -257,14 +259,13 @@ const ExpandableCardDemo:React.FC<HomeLayoutProps>=({aboutData})=> {
           );
         })}
       </ul>
-      <div className="flex justify-center bg-slate-50">
-        <button
-          aria-label="read-more"
-          className=" absolute bottom-3 w-[8rem]  text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 "
-        >
-          {homemisionData.button}
+    
+      <div aria-label="read-more" className="flex justify-center bg-slate-50 ">
+        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 ">
+        {homemisionData.button}
         </button>
       </div>
+
     </div>
   );
 }

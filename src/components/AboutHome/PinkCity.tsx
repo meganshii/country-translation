@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 // import { GoArrowRight } from "react-icons/go";
 import { AboutItem } from "./types/constant";
+import Link from "next/link";
 
 const truncateText = (text: string, maxWords: number) => {
   const wordsArray = text.split(" ");
@@ -116,11 +117,13 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
             </div>
           ))}
         </div>
-        <div className="bg-slate-50 absolute bottom-3 rounded-md ">
+        <Link href="/about/the-pink-city " className="bg-slate-50 absolute bottom-3 rounded-md">
+        <div>
           <button aria-label="read-more" className="text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 ">
             {homemisionData.button}
           </button>
         </div>
+        </Link>
       </div>
     </div>
   );

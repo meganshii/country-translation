@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AboutItem } from "./types/constant";
+import Link from "next/link";
 
 interface HomeLayoutProps{
   aboutData:AboutItem;
@@ -133,13 +134,13 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
       </h1>
       {isMobile ? (
         // Mobile view layout
-        <div className="flex flex-col items-center w-full px-8 md:px-10  relative top-10 ">
+        <div className="flex flex-col items-center w-full px-8 md:px-10  relative top-10">
           {homemachineData.map((machine) => (
             <div
               key={machine.id}
               className="flex flex-col items-center mb-8 border h-[13rem] bg-[#ededed] rounded-2xl w-full relative justify-center"
             >
-              <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center -mt-8">
                 <div className="w-[40%]  h-full ">
                   <Image
                     src={machine.mobileimg}
@@ -213,57 +214,61 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
                 }}
                 className="w-[0.10rem] bg-[#b0aac5] h-[30rem] mask-gradient-featuredproject  relative opacity-25 "
               ></div>
-              <div
-                ref={(el) => {
-                  imagesRef.current[index] = el;
-                }}
-                className={`border-2 border-x-gray-200 h-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 mt-${
-                  machine.id === 1
-                    ? "mt-28"
-                    : machine.id === 2
-                    ? "mt-10"
-                    : machine.id === 3
-                    ? "mt-32"
-                    : machine.id === 4
-                    ? "mt-16"
-                    : machine.id === 5
-                    ? "mt-32"
-                    : "mt-5"
-                } -ml-${
-                  machine.id === 1
-                    ? 5
-                    : machine.id === 2
-                    ? 8
-                    : machine.id === 3
-                    ? 24
-                    : machine.id === 4
-                    ? 20
-                    : machine.id === 5
-                    ? 24
-                    : 20
-                } z-20 bg-white cursor-pointer ${
-                  selectedMachine.id === machine.id ? "-ml-7 " : "-ml-10"
-                }`}
-                onClick={() => handleMachineClick(machine)}
-              >
-                <Image
-                  src={machine.mainImage}
-                  alt={machine.title}
-                  width={200}
-                  height={200}
-                  className="object-cover h-[9rem] w-[9rem] -mt-2"
-                />
-              </div>
+             <div
+  ref={(el) => {
+    imagesRef.current[index] = el;
+  }}
+  style={{
+    marginTop:
+      machine.id === 1
+        ? "7rem"
+        : machine.id === 2
+        ? "25rem"
+        : machine.id === 3
+        ? "20rem"
+        : machine.id === 4
+        ? "4rem"
+        : machine.id === 5
+        ? "20rem"
+        : "8rem",
+  }}
+  className={`border-2 border-x-gray-200 h-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 -ml-${
+    machine.id === 1
+      ? 5
+      : machine.id === 2
+      ? 8
+      : machine.id === 3
+      ? 24
+      : machine.id === 4
+      ? 20
+      : machine.id === 5
+      ? 24
+      : 20
+  } z-20 bg-white cursor-pointer ${
+    selectedMachine.id === machine.id ? "-ml-7 " : "-ml-10"
+  }`}
+  onClick={() => handleMachineClick(machine)}
+>
+  <Image
+    src={machine.mainImage}
+    alt={machine.title}
+    width={200}
+    height={200}
+    className="object-cover h-[9rem] w-[9rem] -mt-2"
+  />
+</div>
+
             </div>
           ))}
         </div>
       </div>
-
+      <Link href="/projects">
       <div className="flex justify-center ">
-        <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10  ">
+        <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
           {homemisionData.button}
         </button>
       </div>
+      </Link>
     </div>
   );
 };

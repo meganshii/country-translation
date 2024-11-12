@@ -73,8 +73,8 @@ const NewSustainability: React.FC <HomeLayoutProps>= ({aboutData}) => {
                     <div className="lg:p-1 p-5">
                       <Card>
                         <CardContent className="flex items-center justify-center  h-full relative ">
-                          <div className="flex flex-col space-x-3   ">
-                            <h3 className="lg:text-3xl  font-poppins font-normal  lg:text-black text-[#138808] absolute top-16 lg:left-14 md:left-14   md:top-[7.5rem] lg:top-10 text-center lg:p-0 lg:text-left w-full text-2xl ">
+                          <div className="flex flex-col space-x-3  w-full ">
+                            <h3 className="lg:text-3xl font-poppins font-normal  lg:text-black text-[#138808] absolute top-16 lg:left-14 md:left-14   md:top-[7.5rem] lg:top-10  lg:p-0 lg:text-left text-center  w-full text-2xl ">
                               {slide.title}
                             </h3>
                             <div className="flex flex-row relative w-full mb-3 top-3 md:top-24 lg:hidden">

@@ -9,7 +9,7 @@ interface MainLayoutProps{
 
 const MainLayout:React.FC <MainLayoutProps>=({clienteleData})=>{
     return(
-        <main className="bg-black">
+        <main className="bg-black overflow-hidden">
              <Clientele clienteleData={clienteleData}/>
             <div className="mt-12">
             <Grid clienteleData={clienteleData} />

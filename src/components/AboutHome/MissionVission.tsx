@@ -81,7 +81,7 @@ const homeaboutData=aboutData?.About[0]?.missionvissionContent
       </h2>
 
       <div className="flex w-full relative items-center p-8">
-        <div className="lg:w-[70%] w-full ">
+        <div className="lg:w-[70%] w-full">
           <Carousel
             className="lg:w-full lg:max-w-screen-md relative lg:h-[27rem] h-[35.5rem]"
             setApi={setCarouselApi}
@@ -90,14 +90,14 @@ const homeaboutData=aboutData?.About[0]?.missionvissionContent
               {homeaboutData.slides.map((slide, index) => {
                 return (
                   <CarouselItem key={index}>
-                    <div className="p-1">
+                    <div className="p-1  lg:h-full h-[30rem]">
                       <Card>
-                        <CardContent className="lg:flex items-center justify-center p-3  relative lg:mt-0 mt-3">
-                          <div className="flex flex-col lg:mb-[rem]">
+                        <CardContent className="lg:flex items-center justify-center p-3  relative">
+                          <div className="flex flex-col">
                             <h3 className="lg:text-3xl font-poppins font-normal pl-5  lg:text-left  ">
                               {slide.title}
                             </h3>
-                            <div className="lg:flex lg:flex-row  flex flex-col  items-center justify-center lg:space-x-20 lg:mr-10  w-full">
+                            <div className="lg:flex lg:flex-row  flex flex-col  items-center justify-center lg:space-x-20 lg:mr-10  w-full lg:mt-0 -mt-5">
                               <div className="flex-shrink-0 relative lg:left-0 flex justify-center lg:justify-start lg:bottom-0  ">
                                 <Image
                                 src={slide.imageSrc}
@@ -108,13 +108,13 @@ const homeaboutData=aboutData?.About[0]?.missionvissionContent
                             style={{ height: "15rem", width: "15rem" }}
                                 />
                               </div>
-                              <p className="lg:text-sm text-xs font-semi-medium text-center lg:w-[26rem] font-poppins lg:mb-3 lg:right-10 relative  lg:bottom-0 w-[18rem] ">
+                              <p className="lg:text-sm text-xs font-semi-medium text-center lg:w-[26rem] font-poppins lg:mb-3 lg:right-10 relative  lg:bottom-0 w-[18rem]          ">
                                 {slide.description}
                               </p>
                             </div>
 
                             {slide.points && (
-                              <div className="lg:flex lg:flex-row grid grid-cols-2 gap-5 lg:gap-0 text-sm lg:w-full lg:font-bold  text-left lg:p-3 justify-center  w-full lg:h-[4rem] p-2  z-10 ">
+                              <div className="grid  grid-cols-2 gap-5 text-sm font-bold text-left p-2 z-10  w-full lg:h-[4rem] lg:gap-0 lg:flex lg:p-3 lg:w-full lg:font-bold">
                                 {slide.points.map((point, pointIndex) => (
                                   <div
                                     key={pointIndex}
@@ -166,7 +166,7 @@ const homeaboutData=aboutData?.About[0]?.missionvissionContent
           {/* Dots for mobile view */}
           {renderDots()}
 
-          <div className=" overflow-hidden lg:visible invisible w-[30%] absolute right-0 top-0 p-5">
+          <div className=" overflow-hidden lg:block hidden w-[30%] absolute right-0 top-0 p-5 ">
           {sideicon[currentSlide] && (
   <div className={` h-full w-full transition-transform duration-1000 ease-in-out opacity-100 transform`}>
     {React.createElement(sideicon[currentSlide])}

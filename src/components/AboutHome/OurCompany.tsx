@@ -12,6 +12,7 @@ const MobileCarousel = dynamic(() => import("./Mobilecarasouel"));
 const Ourcompanybgimg =dynamic (()=>import("../Icons/about/Ourcompanybgimg"),{ssr:false})
 
 import { AboutItem } from "./types/constant";
+import Link from "next/link";
 
 
 interface HomeLayoutProps{
@@ -35,7 +36,7 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
   }, []);
 
   return (
-    <div className="relative lg:h-[39rem] h-[45rem] md:h-[50rem] bg-white text-white lg:flex lg:flex-col items-center lg:pt-10 pt-5">
+    <div className="relative lg:h-[39rem] h-[43rem] md:h-[50rem] bg-white text-white lg:flex lg:flex-col items-center lg:pt-20 ">
       {/* Background image */}
       <div className="absolute inset-0">
        <Ourcompanybgimg  />
@@ -55,11 +56,11 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
       {/* Gradient overlay */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#171033] to-[#300675] opacity-60 z-[-1]"></div> */}
 
-      <h1 className="lg:text-3xl text-2xl font-medium font-poppins z-10  absolute w-full lg:pl-10 text-[#3a2a79] pl-8 ">
+      <h1 className="lg:text-3xl text-2xl font-medium font-poppins z-10  absolute  w-full lg:pl-10 text-[#3a2a79] pl-8 lg:mb-0 -mt-14">
         {homeaboutData.title}
       </h1>
       {/* <div className=" lg:invisible visible border mt-2 absolute top-0 z-10"></div> */}
-      <div className="lg:flex lg:flex-row w-full lg:h-3/5 h-full  lg:absolute relative lg:top-[6rem] top-20  flex flex-col">
+      <div className="lg:flex lg:flex-row w-full lg:h-3/5 h-full  lg:absolute relative lg:top-[6rem]   flex flex-col">
         {/* <div className="bg-gray-200 bg-opacity-45 rounded-2xl p-3 shadow-lg  w-[50%] absolute -left-5 ">
           <Carousel />
        
@@ -75,11 +76,13 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
           <p className=" lg:mt-0 ">{homeaboutData.description}</p>
         </div>
       </div>
-      <div className="flex justify-center bg-slate-50">
-        <button aria-label="read-more" className=" absolute bottom-3  text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 ">
-          {homemisionData.button}
+      <Link href="/about/our-company">
+      <div aria-label="read-more" className="flex justify-center bg-slate-50 ">
+        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 ">
+        {homemisionData.button}
         </button>
       </div>
+      </Link>
     </div>
   );
 };
