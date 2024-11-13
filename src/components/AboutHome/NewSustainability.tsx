@@ -10,11 +10,7 @@ import {
 } from "@/components/ui/about/carousel";
 import { AboutItem } from "./types/constant";
 
-import {
-  slides,
-  Sustainabilityheading,
-  missionvissionContent,
-} from "../Constants/About/AboutUsPage.json";
+
 import dynamic from "next/dynamic";
 interface HomeLayoutProps {
   aboutData: AboutItem;
@@ -40,12 +36,12 @@ const NewSustainability: React.FC <HomeLayoutProps>= ({aboutData}) => {
   };
 
   const handleNext = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % homesustainData.length);
   };
 
   const handlePrevious = () => {
     setCurrentSlide(
-      (prevSlide) => (prevSlide - 1 + slides.length) % slides.length
+      (prevSlide) => (prevSlide - 1 + homesustainData.length) % homesustainData.length
     );
   };
 
@@ -202,7 +198,7 @@ const NewSustainability: React.FC <HomeLayoutProps>= ({aboutData}) => {
           </div>
 
           <div className="flex justify-center  md:mt-[16rem] mt-[23rem] lg:invisible visible">
-            {slides.map((_, index) => (
+            {homesustainData.map((_, index) => (
               <div
                 key={index}
                 onClick={() => handleDotClick(index)}

@@ -3,7 +3,7 @@
 import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Page4 from "./carasoul";
-import { companyContent,missionvissionContent } from "../Constants/About/AboutUsPage.json"; // Adjust path as needed
+ // Adjust path as needed
 // import MobileCarousel from "./Mobilecarasouel";
 import dynamic from "next/dynamic";
 
